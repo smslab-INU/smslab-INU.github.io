@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Material and Structure Lab - Home</title>
+<title>Smart Material and Structure Lab - Lecture</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -35,10 +35,10 @@
   .site-header{ position:relative; }
   .hero-media{
     position:relative;
-    height:560px;
-    background-image:url("images/INU1.jpg");
+    height:300px;
+    background-image:url("images/top-banner-lecture.jpg");
     background-size:cover;
-    background-position:center 30%;
+    background-position:center 64.28%;
     overflow:hidden;
   }
   .hero-media::before{
@@ -117,105 +117,36 @@
   }
   .site-nav.is-scrolled .menu-toggle{ color:#222222; }
 
-  /* ---------- intro / content ---------- */
+  /* ---------- page title ---------- */
   .intro{
     text-align:center;
-    padding:56px 32px 8px;
+    padding:70px 32px 8px;
   }
-  .eyebrow p{
-    margin:0 0 6px;
-    font-size:15px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-  }
-  .eyebrow p.eyebrow-univ{
-    font-weight:400;
-    color:#818181;
-  }
-  .eyebrow p.eyebrow-dept{
-    font-weight:700;
-    color:var(--accent-gold);
-  }
-  .lab-title{
-    margin:18px 0 40px;
-    font-size:44px;
+  .page-title{
+    margin:0 0 8px;
+    font-size:26px;
     line-height:1.28;
     font-weight:700;
     color:var(--ink);
-    text-wrap:balance;
   }
-  .intro-text-wrap{
-    text-align:center;
+  .page-subtitle{
+    margin:0 0 8px;
+    font-size:14px;
+    color:#777;
   }
-  .welcome{
-    max-width:1050px;
-    margin:0 auto 26px;
-    font-size:23px;
+
+  /* ---------- shared page sections ---------- */
+  .page-section{ padding:46px 0; }
+  .intro + .page-section,
+  .page-section + .page-section{ border-top:1px solid var(--border); }
+  .page-section:last-of-type{ border-bottom:1px solid var(--border); }
+  .section-title{
+    margin:0 0 30px;
+    font-size:22px;
     font-weight:700;
     color:#000;
-    line-height:1.4;
+    text-align:center;
   }
-  .intro-text{
-    max-width:760px;
-    margin:0 auto;
-    text-align:left;
-    padding:0 0 60px;
-    font-size:15.5px;
-    color:#222;
-  }
-  .intro-text > p{ margin:0 0 4px; }
-  .intro-text .question{
-    margin:26px 0 6px;
-    font-size:18px;
-    font-weight:700;
-    color:var(--accent-teal);
-  }
-  .intro-text ul{
-    margin:0 0 4px;
-    padding-left:22px;
-  }
-  .intro-text li{ margin:4px 0; }
-
-  /* ---------- contact ---------- */
-  .contact-section{
-    position:relative;
-    background-color:#0f2038;
-    background-image:linear-gradient(rgba(15,32,56,.4), rgba(15,32,56,.4)), url("images/INU2.jpg");
-    background-size:cover;
-    background-position:center top;
-    padding:80px 0 170px;
-  }
-  .contact-title{
-    margin:0 0 10px;
-    font-size:23px;
-    font-weight:700;
-    color:#ffffff;
-  }
-  .contact-sub{
-    margin:0 0 34px;
-    font-size:15px;
-    color:rgba(255,255,255,.78);
-  }
-  .contact-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:32px;
-  }
-  .contact-card h3{
-    margin:0 0 12px;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--accent-gold);
-  }
-  .contact-card p, .contact-card a{
-    display:block;
-    margin:0 0 6px;
-    font-size:14.5px;
-    color:rgba(255,255,255,.92);
-  }
-  .contact-card a:hover{ color:var(--accent-gold); }
 
   /* ---------- footer ---------- */
   footer{
@@ -226,9 +157,22 @@
     justify-content:flex-end;
   }
 
+.lecture-list{
+    max-width:980px;
+    margin:0 auto;
+    list-style:disc;
+    padding-left:22px;
+  }
+  .lecture-list li{
+    margin:9px 0;
+    font-size:14.5px;
+    color:#333;
+    line-height:1.6;
+  }
+
   /* ---------- mobile ---------- */
   @media (max-width:980px){
-    .hero-media{ height:300px; background-attachment:scroll; background-position:center 32%; }
+    .hero-media{ height:148px; background-attachment:scroll; }
     .header-row{ padding:14px 20px; position:relative; }
     .logo img{ height:34px; }
     .menu-toggle{ display:block; }
@@ -252,18 +196,11 @@
       border-bottom:none;
     }
     .main-nav a.active{ color:var(--accent-gold); }
-    /* the dropdown panel is always a dark overlay, so its text stays white
-       even once the bar itself has switched to the white "scrolled" look */
     .site-nav.is-scrolled .main-nav a{ color:#ffffff; }
     .site-nav.is-scrolled .main-nav a.active{ color:var(--accent-gold); }
 
     .container{ padding:0 20px; }
-    .intro{ padding:40px 20px 4px; }
-    .lab-title{ font-size:28px; margin:14px 0 30px; }
-    .welcome{ font-size:19px; }
-    .intro-text{ padding-bottom:44px; }
-    .contact-grid{ grid-template-columns:1fr; gap:30px; }
-    .contact-section{ padding:44px 0 100px; }
+    .intro{ padding:50px 20px 4px; }
   }
 </style>
 </head>
@@ -282,12 +219,12 @@
         <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
         <nav class="main-nav" id="mainNav">
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="research.html">RESEARCH</a></li>
             <li><a href="research-achivement.html">RESEARCH ACHIVEMENT</a></li>
             <li><a href="members.html">MEMBERS</a></li>
             <li><a href="opening.html">OPENING</a></li>
-            <li><a href="lecture.html">LECTURE</a></li>
+            <li><a href="lecture.html" class="active">LECTURE</a></li>
             <li><a href="news.html">NEWS</a></li>
             <li><a href="contact.html">CONTACT</a></li>
           </ul>
@@ -298,56 +235,35 @@
 
   <main>
     <div class="intro container">
-      <div class="eyebrow">
-        <p class="eyebrow-univ">INCHEON NATIONAL UNIVERSITY</p>
-        <p class="eyebrow-dept">DEPARTMENT OF CIVIL AND ENVIRONMENTAL ENGINEERING</p>
-      </div>
-      <h1 class="lab-title">SMART MATERIAL and STRUCTURE LAB</h1>
+      <h1 class="page-title">LECTURE</h1>
     </div>
 
-    <div class="intro-text-wrap container">
-      <h2 class="welcome">Welcome to Smart Material and Structure Laboratory (Seung-Jung Lee's group)</h2>
-      <div class="intro-text">
-        <p>We are in Department of Civil and Environmental Engineering at Incheon National University.</p>
-        <p>We always focus on the following engineering issues:</p>
-
-        <p class="question">Can we predict the failure of the structures before it occurs??</p>
-        <ul>
-          <li>Develop efficient numerical analysis and algorithms for various engineering problems</li>
-          <li>Develop an optimal sensing system to properly monitor structural behavior</li>
-          <li>Detect signs of failure of a structure and Predict its remaining useful life</li>
-        </ul>
-
-        <p class="question">Can we contribute to the environment??</p>
-        <ul>
-          <li>Develop Net Zero Energy Structure</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="contact-section">
+    <div class="page-section">
       <div class="container">
-        <h2 class="contact-title">CONTACT</h2>
-        <p class="contact-sub">For any inquiries about research positions and others, please contact us.</p>
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>email</h3>
-            <a href="mailto:seungjung@inu.ac.kr">seungjung@inu.ac.kr</a>
-            <a href="mailto:mail.to.SeungJung@gmail.com">mail.to.SeungJung@gmail.com</a>
-          </div>
-          <div class="contact-card">
-            <h3>phone</h3>
-            <p>+82-32-835-8467</p>
-            <p>+82-32-835-4243</p>
-          </div>
-          <div class="contact-card">
-            <h3>address</h3>
-            <p>(22012) 인천광역시 연수구 아카데미로 119 인천대학교 8호관 343호(교수 연구실); 9호관 308호(학생 연구실)</p>
-            <p>Building 8 - Room 343, 119 Academy-ro, Yeonsu-gu, Incheon, Republic of Korea</p>
-          </div>
-        </div>
+        <h2 class="section-title">Undergraduate Courses</h2>
+        <ul class="lecture-list">
+          <li>Self-Design Seminar I, II (자기설계세미나 1, 2; 1학년 1, 2학기)</li>
+          <li>Reinforced Concrete Engineering and Design I (철근콘크리트 및 설계1; 3학년 1학기)</li>
+          <li>Reinforced Concrete Engineering and Design II (철근콘크리트 및 설계2; 3학년 2학기)</li>
+          <li>Prestressed Concrete Engineering and Design (PSC구조설계; 4학년 1학기)</li>
+          <li>Constructional Materials and Experiment (건설재료학 및 실험; 4학년 1학기)</li>
+        </ul>
       </div>
     </div>
+
+    <div class="page-section">
+      <div class="container">
+        <h2 class="section-title">Graduate Courses</h2>
+        <ul class="lecture-list">
+          <li>Theory on Reinforced Concrete Structures (철근콘크리트공학특론; 1학기)</li>
+          <li>Fatigue and Fracture Mechanics (피로 및 파괴역학; 1학기)</li>
+          <li>Advanced Construction Materials (건설재료특론; 2학기)</li>
+          <li>Finite Element Method 2 (유한요소법2; 2학기)</li>
+          <li>Structural Reliability and Risk Analysis (신뢰성구조설계; 2학기)</li>
+        </ul>
+      </div>
+    </div>
+
   </main>
 
   <footer>
@@ -380,11 +296,8 @@
       var y = window.scrollY || window.pageYOffset;
       var heroH = heroMedia.offsetHeight;
 
-      // 1) nav switches from transparent (over the photo) to a solid white bar
-      //    after just a small scroll, like the original site
       siteNav.classList.toggle('is-scrolled', y > 40);
 
-      // 2) hero photo fades to the page background from the bottom as you scroll
       if(!reduceMotion){
         var fade = Math.min(1, Math.max(0, y / (heroH * 0.85)));
         heroFade.style.opacity = fade;

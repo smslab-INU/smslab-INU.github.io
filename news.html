@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Material and Structure Lab - News</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3f3f3f;
+    --text:#222222;
+    --accent-gold:#a48f7a;
+    --accent-teal:#24678d;
+    --body-bg:#f2f2f2;
+    --panel-bg:#f7f5f2;
+    --border:#e2ddd6;
+    --max:1180px;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--body-bg);
+    color:var(--text);
+    font-family:'Montserrat', Arial, Helvetica, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+
+  /* ---------- hero / header ---------- */
+  .site-header{ position:relative; }
+  .hero-media{
+    position:relative;
+    height:300px;
+    background-image:url("images/top-banner-news.jpg");
+    background-size:cover;
+    background-position:0% 42.91%;
+    overflow:hidden;
+  }
+  .hero-media::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:170px;
+    background:linear-gradient(to bottom, rgba(10,16,22,.55), rgba(10,16,22,0));
+    pointer-events:none;
+  }
+  .hero-fade{
+    position:absolute;
+    inset:0;
+    background:var(--body-bg);
+    opacity:0;
+    pointer-events:none;
+  }
+  .site-nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background-color:rgba(20,30,38,0);
+    box-shadow:0 0 0 rgba(0,0,0,0);
+    transition:background-color .2s ease, box-shadow .2s ease;
+  }
+  .site-nav.is-scrolled{
+    background-color:rgba(255,255,255,.98);
+    box-shadow:0 2px 12px rgba(0,0,0,.12);
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    min-height:66px;
+  }
+  .logo{ flex-shrink:0; }
+  .logo img{ height:44px; width:auto; max-width:none; }
+  .logo-dark{ display:none; }
+  .site-nav.is-scrolled .logo-light{ display:none; }
+  .site-nav.is-scrolled .logo-dark{ display:block; }
+
+  .main-nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .main-nav a{
+    color:#ffffff;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+    white-space:nowrap;
+    transition:color .2s ease, border-color .15s ease, opacity .15s ease;
+  }
+  .main-nav a:hover, .main-nav a.active{
+    border-bottom-color:#ffffff;
+  }
+  .site-nav.is-scrolled .main-nav a{ color:#222222; }
+  .site-nav.is-scrolled .main-nav a:hover,
+  .site-nav.is-scrolled .main-nav a.active{ border-bottom-color:#222222; }
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:26px;
+    line-height:1;
+    cursor:pointer;
+    padding:4px 8px;
+  }
+  .site-nav.is-scrolled .menu-toggle{ color:#222222; }
+
+  /* ---------- page title ---------- */
+  .intro{
+    text-align:center;
+    padding:70px 32px 8px;
+  }
+  .page-title{
+    margin:0 0 8px;
+    font-size:26px;
+    line-height:1.28;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .page-subtitle{
+    margin:0 0 8px;
+    font-size:14px;
+    color:#777;
+  }
+
+  /* ---------- shared page sections ---------- */
+  .page-section{ padding:46px 0; }
+  .intro + .page-section,
+  .page-section + .page-section{ border-top:1px solid var(--border); }
+  .page-section:last-of-type{ border-bottom:1px solid var(--border); }
+  .section-title{
+    margin:0 0 30px;
+    font-size:22px;
+    font-weight:700;
+    color:#000;
+    text-align:center;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:20px 0 40px;
+  }
+  footer .container{
+    display:flex;
+    justify-content:flex-end;
+  }
+
+.news-list{
+    max-width:980px;
+    margin:0 auto;
+  }
+  .news-year-group{
+    display:flex;
+    gap:22px;
+    align-items:flex-start;
+    padding:24px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .news-year-group:first-child{ padding-top:0; }
+  .news-list > .news-year-group:last-child{ border-bottom:none; }
+  .news-year-label{
+    flex-shrink:0;
+    width:104px;
+    padding-top:2px;
+    font-size:30px;
+    font-weight:700;
+    color:#000;
+    text-align:center;
+  }
+  .news-year-entries{
+    flex:1;
+    min-width:0;
+  }
+  .news-entry{
+    padding:20px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .news-year-entries > .news-entry:first-child{ padding-top:0; }
+  .news-year-entries > .news-entry:last-child{ padding-bottom:0; border-bottom:none; }
+  .news-title{
+    margin:0 0 4px;
+    font-size:15.5px;
+    font-weight:700;
+    color:#222;
+  }
+  .news-date{
+    margin:0 0 10px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--accent-gold);
+  }
+  .news-row{
+    display:flex;
+    gap:24px;
+    align-items:flex-start;
+  }
+  .news-body-col{
+    flex:1;
+    min-width:0;
+  }
+  .news-body{
+    margin:0 0 10px;
+    font-size:15px;
+    color:#555;
+    line-height:1.7;
+    text-align:justify;
+  }
+  .news-body:last-child{ margin-bottom:0; }
+  .news-body a{ color:var(--accent-teal); }
+  .news-body a:hover{ text-decoration:underline; }
+  .news-photos{
+    flex-shrink:0;
+    width:260px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .news-photos img{
+    width:100%;
+    height:auto;
+    border-radius:4px;
+    display:block;
+  }
+  .news-photos.compact{
+    width:150px;
+  }
+  .news-photos.multi{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .news-photos.multi img{
+    width:calc(50% - 4px);
+    height:110px;
+    object-fit:cover;
+    cursor:zoom-in;
+    transition:opacity .15s ease;
+  }
+  .news-photos.multi img:hover{ opacity:.85; }
+
+  /* ---------- lightbox ---------- */
+  .lightbox-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(10,12,15,.88);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    cursor:zoom-out;
+  }
+  .lightbox-overlay.open{ display:flex; }
+  .lightbox-overlay img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:4px;
+    box-shadow:0 10px 40px rgba(0,0,0,.5);
+    cursor:default;
+  }
+  .lightbox-close{
+    position:absolute;
+    top:18px; right:26px;
+    color:#fff;
+    font-size:32px;
+    line-height:1;
+    background:none;
+    border:0;
+    cursor:pointer;
+    padding:6px;
+  }
+  .lightbox-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:rgba(255,255,255,.14);
+    border:0;
+    color:#fff;
+    font-size:30px;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .lightbox-nav:hover{ background:rgba(255,255,255,.28); }
+  .lightbox-prev{ left:16px; }
+  .lightbox-next{ right:16px; }
+
+  /* ---------- mobile ---------- */
+  @media (max-width:980px){
+    .hero-media{ height:148px; background-attachment:scroll; }
+    .header-row{ padding:14px 20px; position:relative; }
+    .logo img{ height:34px; }
+    .menu-toggle{ display:block; }
+    .main-nav{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:rgba(20,25,30,.98);
+      display:none;
+      flex-direction:column;
+    }
+    .main-nav.open{ display:flex; }
+    .main-nav ul{
+      flex-direction:column;
+      gap:0;
+      padding:6px 0;
+    }
+    .main-nav li{ border-top:1px solid rgba(255,255,255,.12); }
+    .main-nav a{
+      display:block;
+      padding:14px 20px;
+      border-bottom:none;
+    }
+    .main-nav a.active{ color:var(--accent-gold); }
+    .site-nav.is-scrolled .main-nav a{ color:#ffffff; }
+    .site-nav.is-scrolled .main-nav a.active{ color:var(--accent-gold); }
+
+    .container{ padding:0 20px; }
+    .intro{ padding:50px 20px 4px; }
+
+    .news-year-group{ flex-direction:column; gap:8px; }
+    .news-year-label{ width:auto; text-align:left; font-size:24px; }
+    .news-row{ flex-direction:column; }
+    .news-photos{ width:100% !important; margin-top:10px; }
+    .news-photos.compact{ width:150px !important; }
+    .news-photos.multi img{ width:calc(50% - 5px); height:120px; }
+    .lightbox-close{ top:10px; right:14px; font-size:28px; }
+    .lightbox-nav{ width:42px; height:42px; font-size:24px; }
+    .lightbox-prev{ left:8px; }
+    .lightbox-next{ right:8px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="hero-media" id="heroMedia">
+      <div class="hero-fade" id="heroFade"></div>
+    </div>
+    <div class="site-nav" id="siteNav">
+      <div class="header-row">
+        <a href="index.html" class="logo">
+          <img src="images/logo-white.png" class="logo-light" alt="Smart Material and Structure Lab">
+          <img src="images/logo-color.png" class="logo-dark" alt="Smart Material and Structure Lab">
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+        <nav class="main-nav" id="mainNav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">RESEARCH</a></li>
+            <li><a href="research-achivement.html">RESEARCH ACHIVEMENT</a></li>
+            <li><a href="members.html">MEMBERS</a></li>
+            <li><a href="opening.html">OPENING</a></li>
+            <li><a href="lecture.html">LECTURE</a></li>
+            <li><a href="news.html" class="active">NEWS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro container">
+      <h1 class="page-title">NEWS</h1>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <div class="news-list">
+      <div class="news-year-group">
+        <div class="news-year-label">2026</div>
+        <div class="news-year-entries">
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 이준영 학생, 석사과정(학석연계과정) 입학</h3>
+        <div class="news-date">9/1/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이준영 학생이 학부 졸업 후, 석사과정(학석연계과정)으로 입학하였습니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">GRADUATION - 이영은 학생, 석사 졸업, 이준영 학생, 학부 졸업</h3>
+        <div class="news-date">8/21/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이영은 학생이 2026년 8월 석사과정을 성공적으로 마치고 졸업하였습니다. 이준영 학생도 학부를 졸업하였습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">EMPLOYMENT - 이영은 학생, 대우건설 입사</h3>
+        <div class="news-date">7/1/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이영은 학생이 대우건설에 입사하게 되었습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 임재현 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">7/1/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">임재현 학생이 학부연구생으로 참여하게 되었습니다. 환영합니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">CONFERENCE - 2026년도 봄 한국콘크리트학회 학술대회 참가</h3>
+        <div class="news-date">5/6/2026 - 5/8/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2026년 5월 6일 - 5월 8일 창원컨벤션센터(CECO)에서 개최된 2026년도 봄 한국콘크리트학회 학술대회에 이승정 교수, 이영은, 정동섭, 이준영, 정승현 학생이 참가하였습니다. 이영은 학생은 "시멘트 기반 구조용 커패시터 개발" 논문을 발표하였고, 정동섭 학생은 "이방성 응력이 계측 가능한 전도성 나노소재를 혼입한 시멘트 실험체에 대한 실험적 연구" 논문을 발표하였습니다. 또한 경성대 문도영 교수님 연구실, 전북대 ACE Lab 및 고려대 응용구조연구실과 향후 공동연구를 위한 논의 시간을 가졌습니다!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/260508-2026-4.jpg" alt="CONFERENCE - 2026년도 봄 한국콘크리트학회 학술대회 참가">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">EMPLOYMENT - 성지혜 학생, 태조엔지니어링 입사</h3>
+        <div class="news-date">3/3/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">성지혜 학생이 태조엔지니어링에 입사하게 되었습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">GRADUATION - 성지혜 학생,  석사 졸업</h3>
+        <div class="news-date">2/20/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">성지혜 학생이 2026년 2월 석사과정을 성공적으로 마치고 졸업하였습니다. 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 이승정 교수, 인천대학교 2025-2학기 우수강의 교원 표창 수상</h3>
+        <div class="news-date">2/19/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이승정 교수가 인천대학교 2025-2학기 우수강의 교원 표창장을 수상하였습니다.</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 정승현 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">1/1/2026</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">정승현 학생이 학부연구생으로 참여하게 되었습니다. 환영합니다!!</p>
+        </div>
+      </div>
+      </div>
+        </div>
+      </div>
+      <div class="news-year-group">
+        <div class="news-year-label">2025</div>
+        <div class="news-year-entries">
+      <div class="news-entry">
+        <h3 class="news-title">GRADUATION - Francis Secret ​Kadzokoya received a master's degree</h3>
+        <div class="news-date">12/11/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">Francis Secret ​Kadzokoya has successfully completed the master's program and received his degree. Congratulations!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">CONSULTING - 인천대학교 가족회사 '(주)한림' 애로기술 컨설팅 완료</h3>
+        <div class="news-date">12/10/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이승정 교수가 인천대학교 산학협력단 가족회사 애로기술 컨설팅위원으로 매칭되어 2025년 9월 12일부터 12월 11일까지 (주)한림의 '스탠드형 태양광 LED 안내판 시제품 제작' 관련 기술 컨설팅을 수행하였습니다. 12월 10일에는 (주)한림의 노창근 대표님이 인천대를 방문하여 최종 컨설팅 미팅을 진행하였습니다.</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/kakaotalk-20251210-144952892.jpg" alt="CONSULTING - 인천대학교 가족회사 '(주)한림' 애로기술 컨설팅 완료">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">SEMINAR - Georgia Institute of Technology 김진연 박사님 방문</h3>
+        <div class="news-date">11/25/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2025년 11월 25일 Georgia Institute of Technology의 김진연 박사님께서 인천대학교를 방문하셔서 "확산초음파를 활용한 콘크리트 균열 깊이 예측 기술"에 대한 세미나를 진행해 주셨으며, 이어서 관련 장비의 사용법과 실험 적용 방법에 대한 상세한 실습 지도를 해주셨습니다!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/251125-2_1.jpg" alt="SEMINAR - Georgia Institute of Technology 김진연 박사님 방문">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 배한준, 이경훈, 이준영, 전규민 학생의 연구팀, 건설환경공학전공 학술제 최우수상 수상</h3>
+        <div class="news-date">11/10/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2025년 11월 10일 인천대학교 11호관 208호에서 개최된 2025학년도 건설환경공학전공 학술의 날 학술제에서 배한준, 이경훈, 이준영, 전규민, 윤효대 학생의 구조분야 연구팀이 최우수상을 수상하였습니다!!</p>
+        <p class="news-body">구조물경진대회에서는 이승정 교수의  지도를 받은 구조분야 연구팀(김예린, 김나현, 김서진, 신규진, 정현혜, 최건호)이 장려상을 수상하였습니다!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/251110.jpg" alt="AWARD - 배한준, 이경훈, 이준영, 전규민 학생의 연구팀, 건설환경공학전공 학술제 최우수상 수상">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">CONFERENCE - 2025년도 가을 한국콘크리트학회 학술대회 참가</h3>
+        <div class="news-date">11/5/2025 - 11/7/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2025년 11월 5일 - 11월 7일 여수 엑스포컨벤션센터에서 개최된 2025년도 가을 한국콘크리트학회 학술대회에 이승정 교수, 성지혜, 이영은, 정동섭, Lem Ilagan 학생이 참가하였습니다. 성지혜 학생은 "시멘트 복합재 전기전도도 예측 모델의 하이퍼파라미터 최적화" 논문을 발표하였고, 정동섭 학생은 "다중벽탄소나노튜브를 혼입한 전도성 그라우트의 자가진단 성능에 대한 실험적 연구" 논문을 발표하였고, 이영은 학생은 "전도성 시멘트 복합체 전극을 활용한 에너지 저장 연구" 논문을 발표하였습니다. 또한 전북대 ACE Lab 및 고려대 응용구조연구실과 향후 공동연구를 위한 논의 시간을 가졌습니다!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/251107-2025_orig.jpg" alt="CONFERENCE - 2025년도 가을 한국콘크리트학회 학술대회 참가">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">APPOINTMENT - 이승정 교수, 부교수로 승진</h3>
+        <div class="news-date">9/1/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2025년 9월 1일자로, 이승정 교수가 인천대학교 도시환경공학부 건설환경공학전공 부교수로 승진하였습니다. 함께 축하해주신 모든 학생 여러분께 깊이 감사드립니다.</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/250901_1.jpg" alt="APPOINTMENT - 이승정 교수, 부교수로 승진">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">EMPLOYMENT - 전성혁 학생, 선진엔지니어링 입사</h3>
+        <div class="news-date">6/2/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">전성혁 학생이 선진엔지니어링 플랜트 에너지부에 입사하게 되었습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">TECHNOLOGY TRANSFER - '빗물을 활용한 마찰대전 발전 시스템' 기술, (주)한림에 이전</h3>
+        <div class="news-date">5/29/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이승정 교수가 보유하고 있는 '빗물을 활용한 마찰대전 발전 시스템(제10-2760664호)' 기술이 (주)한림에 이전되었습니다. 본 기술이전은 인천대학교 산학협력단과 경희대학교 산학협력단의 공동기술이전으로 진행되었습니다.</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">BOOK - 'GFRP 보강근 보강 콘크리트구조 설계 지침' 발간</h3>
+        <div class="news-date">5/15/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2025년 5월 15일자로 이승정 교수가 집필위원으로 참여한 한국콘크리트학회 콘크리트 실무지침 KCI-PM112.2-25 GFRP 보강근 보강 콘크리트구조 설계 지침이 발간되었습니다. 책 소개는 아래 링크에서 확인할 수 있습니다.</p>
+        <p class="news-body"><a href="https://bookstore.kci.or.kr/kci/Book/bookDetail?pid=7404" target="_blank" rel="noopener noreferrer">- 소개</a></p>
+        </div>
+        <div class="news-photos compact">
+          <img src="images/news/250515_orig.jpg" alt="BOOK - 'GFRP 보강근 보강 콘크리트구조 설계 지침' 발간">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">CONFERENCE - 2025년도 봄 한국콘크리트학회 학술대회 참가</h3>
+        <div class="news-date">5/7/2025 - 5/9/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2025년 5월 7일 - 5월 9일 제주신화월드에서 개최된 2025년도 봄 한국콘크리트학회 학술대회에 이승정 교수, 성지혜, 이영은, 정동섭 학생이 참가하였습니다. 성지혜 학생은 "전도성 그라우트의 수분 침투 자가 모니터링 분석" 논문을 발표하였고, 이영은 학생은 "마찰대전 나노발전기를 이용한 전도성 시멘트 복합체 에너지 수확 연구" 논문을 발표하였습니다!</p>
+        </div>
+        <div class="news-photos multi">
+          <img src="images/news/250509-2025-3.jpg" alt="CONFERENCE - 2025년도 봄 한국콘크리트학회 학술대회 참가" class="photo-thumb" data-full="images/news/250509-2025-3.jpg">
+          <img src="images/news/250509-2025-2.jpg" alt="CONFERENCE - 2025년도 봄 한국콘크리트학회 학술대회 참가" class="photo-thumb" data-full="images/news/250509-2025-2.jpg">
+          <img src="images/news/250509-2025-5.jpg" alt="CONFERENCE - 2025년도 봄 한국콘크리트학회 학술대회 참가" class="photo-thumb" data-full="images/news/250509-2025-5.jpg">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 성지혜 학생, 한국복합재료학회 복합재료 우수논문상 수상</h3>
+        <div class="news-date">5/2/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">성지혜 학생이 2025년도 한국복합재료학회 춘계학술대회에서 복합재료 우수논문상을 수상하였습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 전규민 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">5/1/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">전규민 학생이 학부연구생으로 참여하게 되었습니다. 환영합니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">CONFERENCE - 2025년도 한국복합재료학회 춘계학술대회 참가</h3>
+        <div class="news-date">4/30/2025 - 5/2/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2025년 4월 30일 - 5월 2일 제주신화월드에서 개최된 2025년도 한국복합재료학회 춘계학술대회에 성지혜 학생이 참가하였습니다. 성지혜 학생은 "차수용 전도성 그라우트의 최적 자가 진단 시스템 연구" 논문을 발표하였습니다!</p>
+        </div>
+        <div class="news-photos multi">
+          <img src="images/news/250501-1.jpg" alt="CONFERENCE - 2025년도 한국복합재료학회 춘계학술대회 참가" class="photo-thumb" data-full="images/news/250501-1.jpg">
+          <img src="images/news/250501-2.jpg" alt="CONFERENCE - 2025년도 한국복합재료학회 춘계학술대회 참가" class="photo-thumb" data-full="images/news/250501-2.jpg">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 이준영 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">4/1/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이준영 학생이 학부연구생으로 참여하게 되었습니다. 환영합니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - Francis Secret ​Kadzokoya joins as a master's student</h3>
+        <div class="news-date">3/13/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">Francis Secret ​Kadzokoya ​joins as a master's student through the KOICA-Incheon National University Master's Degree Program. Welcome!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 배한준, 이경훈 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">3/1/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">배한준, 이경훈 학생이 학부연구생으로 참여하게 되었습니다. 환영합니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 정동섭 학생, 석사과정 입학</h3>
+        <div class="news-date">3/1/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">정동섭 학생이 학부 졸업 후, 석사과정으로 입학하였습니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">GRADUATION - 전성혁, 정동섭, 민지원 학생,  학부 졸업</h3>
+        <div class="news-date">2/21/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">전성혁, 정동섭, 민지원 학생이 2025년 2월 졸업생이 되었습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">EMPLOYMENT - 민지원 학생, SGC 이테크 건설 입사</h3>
+        <div class="news-date">1/6/2025</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">민지원 학생이 SGC 이테크 건설에 입사하게 되었습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+        </div>
+      </div>
+      <div class="news-year-group">
+        <div class="news-year-label">2024</div>
+        <div class="news-year-entries">
+      <div class="news-entry">
+        <h3 class="news-title">STANDARD - '유리섬유 강화 폴리머 보강근 콘크리트구조 설계기준' 제정 고시</h3>
+        <div class="news-date">12/30/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2024년 12월 30일자로 이승정 교수가 집필위원으로 참여한 KDS 14 20 68 유리섬유 강화 폴리머 보강근 콘크리트구조 설계기준 제정이 고시되었습니다. 고시문과 설계기준 전문은 아래의 링크에서 확인할 수 있습니다.</p>
+        <p class="news-body"><a href="https://www.kcsc.re.kr/board/notdetail/6639" target="_blank" rel="noopener noreferrer">- 고시문</a></p>
+        <p class="news-body"><a href="https://www.kcsc.re.kr/standardCode/viewer/KDS%2014%2020%2068:2024-12-30" target="_blank" rel="noopener noreferrer">- 설계기준 전문</a></p>
+        </div>
+        <div class="news-photos multi">
+          <img src="images/news/1656588321.jpg" alt="STANDARD - '유리섬유 강화 폴리머 보강근 콘크리트구조 설계기준' 제정 고시" class="photo-thumb" data-full="images/news/1656588321.jpg">
+          <img src="images/news/1719091149.jpg" alt="STANDARD - '유리섬유 강화 폴리머 보강근 콘크리트구조 설계기준' 제정 고시" class="photo-thumb" data-full="images/news/1719091149.jpg">
+          <img src="images/news/2025-01-05-121129.jpg" alt="STANDARD - '유리섬유 강화 폴리머 보강근 콘크리트구조 설계기준' 제정 고시" class="photo-thumb" data-full="images/news/2025-01-05-121129.jpg">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">GRADUATION - Sande Francis Okumu received a master's degree</h3>
+        <div class="news-date">12/19/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">Sande Francis Okumu has successfully completed the master's program and received his degree. Congratulations!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">CONFERENCE - 2024년도 가을 한국콘크리트학회 학술대회 참가</h3>
+        <div class="news-date">11/6/2024 - 11/8/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2024년 11월 6일 - 8일 델피노리조트(설악)에서 개최된 2024년도 가을 콘크리트학회 학술대회에 성지혜, 이영은, 정동섭, 전성혁 학생이 참가하였습니다. 성지혜 학생은 "머신러닝 기반 시멘트 복합체의 전기전도도 예측" 논문을 발표하였습니다!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/2024-1_1.jpg" alt="CONFERENCE - 2024년도 가을 한국콘크리트학회 학술대회 참가">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 이영은 학생, 석사과정 입학</h3>
+        <div class="news-date">9/1/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이영은 학생이 학부 졸업 후, 석사과정으로 입학하였습니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">GRADUATION - 이영은 학생,  학부 졸업</h3>
+        <div class="news-date">8/16/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이영은 학생이 2024년 8월 졸업생이 되었습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 이영은 학생,  인천대학교 도시과학대학 학장 표창장, 한국콘크리트학회 2024년 학부 우수 졸업생 표창 수상</h3>
+        <div class="news-date">8/16/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이영은 학생이 인천대학교 도시과학대학 학장 표창장과 한국콘크리트학회 2024년 학부 우수 졸업생 표창을 수상하였습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 민지원 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">6/1/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">민지원 학생이 학부연구생으로 참여하게 되었습니다. 환영합니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">CONFERENCE - 2024년도 봄 한국콘크리트학회 학술대회 참가</h3>
+        <div class="news-date">5/8/2024 - 5/10/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2024년 5월 8일 - 10일 광주김대중컨벤션센터에서 개최된 2024년도 봄 콘크리트학회 학술대회에 이승정 교수, 성지혜, 이영은, 정동섭 학생이 참가하였습니다!!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/240510-2024-1.jpg" alt="CONFERENCE - 2024년도 봄 한국콘크리트학회 학술대회 참가">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - Sande Francis Okumu joins as a master's student</h3>
+        <div class="news-date">3/20/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">Sande Francis Okumu joins as a master's student through the KOICA-Incheon National University Master's Degree Program. Welcome!!​</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 성지혜 학생, 석사과정 입학</h3>
+        <div class="news-date">3/1/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">성지혜 학생이 학부 졸업 후, 석사과정으로 입학하였습니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">GRADUATION - 강윤종, 성지혜 학생,  학부 졸업</h3>
+        <div class="news-date">2/16/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">강윤종, 성지혜 학생이 2024년 2월 졸업생이 되었습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 성지혜 학생,  한국콘크리트학회 2024년 학부 우수 졸업생 표창 수상</h3>
+        <div class="news-date">2/16/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">성지혜 학생이 한국콘크리트학회에서 2024년 학부 우수 졸업생 표창을 수상하였습니다!! 축하드립니다!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 이승정 교수, 인천대학교 2023-2학기 대학원 우수강의 교원 포상 대상자 선정</h3>
+        <div class="news-date">2/6/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이승정 교수가 인천대학교 2023-2학기 대학원 우수강의 교원 포상 대상자로 선정되었습니다.</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 스마트 구조 및 재료 연구실, 인천대학교 2023년도 연구소 학생연구단 지원사업 우수팀(3등) 선정</h3>
+        <div class="news-date">1/26/2024</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">스마트 구조 및 재료 연구실(인천방재연구센터 컨소시엄)이 인천대학교 2023년도 연구소 학생연구단 지원사업의 우수팀(3등)으로 선정되었습니다. 많은 도움을 주신 이헌우 학생(구조진동연구실)에게 감사드립니다!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/240126_orig.jpg" alt="AWARD - 스마트 구조 및 재료 연구실, 인천대학교 2023년도 연구소 학생연구단 지원사업 우수팀(3등) 선정">
+        </div>
+      </div>
+      </div>
+        </div>
+      </div>
+      <div class="news-year-group">
+        <div class="news-year-label">2023</div>
+        <div class="news-year-entries">
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 강윤종, 성지혜, 이영은, 전성혁, 정동섭 학생의 연구팀, 도시과학대학 학술제 대상 수상</h3>
+        <div class="news-date">11/8/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2023년 11월 8일 인천대학교 대강당에서 개최된 2023학년도 도시과학대학 페스티벌 도시과학대학 학술제에서 구조분야 연구팀(강윤종, 민지원, 성지혜, 이영은, 전성혁, 정동섭, 정아영, 최용선; 지도교수 이승정)이 대상을 수상하였습니다!!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/kakaotalk-20231201-153129443-01_1.jpg" alt="AWARD - 강윤종, 성지혜, 이영은, 전성혁, 정동섭 학생의 연구팀, 도시과학대학 학술제 대상 수상">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 전성혁, 정동섭 학생의 연구팀, 건설환경공학전공 학술제 대상 수상</h3>
+        <div class="news-date">10/30/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2023년 10월 30일 인천대학교 대강당에서 개최된 2023학년도 건설환경공학전공 학술의 날 학술제에서 전성혁 학생과 정동섭 학생이 속해있는 구조분야 연구팀(민지원, 장수정, 전성혁, 정동섭, 정아영, 최용선; 지도교수 이승정)이 대상을 수상하였습니다!!</p>
+        <p class="news-body">구조물경진대회에서는 이승정 교수의  지도를 받은 구조분야 연구팀(김선호, 손현배, 편도영, 남서현, 김유민)이 대상을 수상하였습니다!!</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/kakaotalk-20231201-153129443_orig.jpg" alt="AWARD - 전성혁, 정동섭 학생의 연구팀, 건설환경공학전공 학술제 대상 수상">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 이승정 교수, 인천대학교 2023-1학기 대학원 우수강의 교원 포상 대상자 선정</h3>
+        <div class="news-date">9/5/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이승정 교수가 인천대학교 2023-1학기 대학원 우수강의 교원 포상 대상자로 선정되었습니다.</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 전성혁, 정동섭 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">9/1/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">SeongHyeok Jeon(전성혁) and Dongsub Jung(정동섭) join as an undergraduate researcher. Welcome!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 이승정 교수, 한국비파괴검사학회 비파괴검사학회지 우수심사위원상 수상</h3>
+        <div class="news-date">5/25/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2023년 5월 24일 ~ 26일 부산항국제전시컨벤션센터에서 개최된 2023년 한국비파괴검사학회 춘계학술대회에서 이승정 교수가 비파괴검사학회지 우수심사위원상을 수상하였습니다.</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">SEMINAR - 제74회 미추홀포럼 개최</h3>
+        <div class="news-date">4/26/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2023년 4월 26일(수) 인천대학교 도시과학대학 도시환경공학부 건설환경공학전공의 주최로 제74회 미추홀포럼 -New Topics of Industrial Construction Materials-가 개최되었습니다. ARUOVA LYAZAT BORANBAYEVNA 교수(Eurasian National University; Republic of Kazakhstan)께서 발제자로 참석해주셨으며, 이승정 교수가 연구 중인 건설재료와 관련된 신기술들을 소개하는 시간을 가졌습니다.</p>
+        <p class="news-body">미추홀 포럼​:  인천대학교 도시과학연구원에서 매년 개최해 오고 있는 정기학술포럼</p>
+        </div>
+        <div class="news-photos multi">
+          <img src="images/news/kakaotalk-20230426-122558448_4.jpg" alt="SEMINAR - 제74회 미추홀포럼 개최" class="photo-thumb" data-full="images/news/kakaotalk-20230426-122558448_4.jpg">
+          <img src="images/news/kakaotalk-20230426-122426135_4.jpg" alt="SEMINAR - 제74회 미추홀포럼 개최" class="photo-thumb" data-full="images/news/kakaotalk-20230426-122426135_4.jpg">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 이영은 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">3/1/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">Youngeun​ Lee(이영은) joins as an undergraduate researcher. Welcome!!</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">APPOINTMENT - 유일환 박사님, 전북대학교 지역건설공학과 조교수 임용</h3>
+        <div class="news-date">3/1/2023</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">Dr. You(유일환 박사님) has been appointed as an Assistant Professor in the Department of Rural Construction Engineering at Jeonbuk National University! Congratulations!!</p>
+        </div>
+      </div>
+      </div>
+        </div>
+      </div>
+      <div class="news-year-group">
+        <div class="news-year-label">2022</div>
+        <div class="news-year-entries">
+      <div class="news-entry">
+        <h3 class="news-title">SEMINAR - 제52회 미추홀포럼 개최</h3>
+        <div class="news-date">12/28/2022</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2022년 12월 28일(수) 인천대학교 도시과학대학 도시환경공학부 건설환경공학전공의 주최로 제52회 미추홀포럼 -도시건설기술의 스마트 기술 적용 및 활성화-가 비대면으로 개최되었습니다. 김진균 교수(경희대학교; 구조진동 디지털트윈 기술), 안다훈 교수(서울과학기술대학교; 스마트 센서 구현을 위한 자석기반 마찰대전 에너지 하베스터), 박정준 박사(한국철도기술연구원; 기존 시설물의 BIM기반 유지관리를 위한 기술 개발)께서 발제자로 참석해주셨으며, 이승정 교수가 최종 토론에 참석하였습니다.</p>
+        <p class="news-body">미추홀 포럼​:  인천대학교 도시과학연구원에서 매년 개최해 오고 있는 정기학술포럼</p>
+        </div>
+        <div class="news-photos multi">
+          <img src="images/news/52-01.jpg" alt="SEMINAR - 제52회 미추홀포럼 개최" class="photo-thumb" data-full="images/news/52-01.jpg">
+          <img src="images/news/52-02.jpg" alt="SEMINAR - 제52회 미추홀포럼 개최" class="photo-thumb" data-full="images/news/52-02.jpg">
+          <img src="images/news/52-03.jpg" alt="SEMINAR - 제52회 미추홀포럼 개최" class="photo-thumb" data-full="images/news/52-03.jpg">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">JOIN - 강윤종, 성지혜 학생, 학부연구생으로 참여</h3>
+        <div class="news-date">11/1/2022</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">​Yunjong Kang(강윤종) and Jihye Sung(성지혜) join as undergraduate researchers. Welcome!!</p>
+        <p class="news-body">New lab for students is opened at Room 308 Building 9 (9호관 308호)</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 이승정 교수, 인천대학교 2021년도 학술연구상 수상</h3>
+        <div class="news-date">3/29/2022</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이승정 교수가 인천대학교에서 2021년도 학술연구상을 수상하였습니다.</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">AWARD - 이승정 교수, 한국방재학회 학회장 표창 수상</h3>
+        <div class="news-date">2/17/2022</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2022년 2월 16일 ~ 17일 연세대학교에서 개최된 2022 한국방재학회 학술발표대회에서 이승정 교수가 학회장 표창을 수상하였습니다.</p>
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">SEMINAR - 제43회 미추홀포럼 개최</h3>
+        <div class="news-date">2/4/2022</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">2022년 2월 4일(금) 인천대학교 도시과학대학 도시환경공학부 건설환경공학전공의 주최로 제43회 미추홀포럼 -스마트도시 건설 및 유지관리 기술-이 개최되었습니다. 박정준 박사(한국철도기술연구원; 철도인프라 분야 BIM 체계 도입 및 현황), 유일환 박사(고려대학교; 탄소기반 물질 활용에 의한 건설 소재의 패러다임 변화), 김병규 박사(한국철도기술연구원; 해저터널 자동화 그라우팅 및 진동 그라우팅 공법)께서 발제자로 참석해주셨으며, 유민택 박사(한국철도기술연구원)와 이승정 교수가 최종 토론에 참석하였습니다.</p>
+        <p class="news-body">미추홀 포럼​:  인천대학교 도시과학연구원에서 매년 개최해 오고 있는 정기학술포럼</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/kakaotalk-20220214-141415979-02.jpg" alt="SEMINAR - 제43회 미추홀포럼 개최">
+        </div>
+      </div>
+      </div>
+        </div>
+      </div>
+      <div class="news-year-group">
+        <div class="news-year-label">2021</div>
+        <div class="news-year-entries">
+      <div class="news-entry">
+        <h3 class="news-title">PRESS RELEASE - INU Research Archive</h3>
+        <div class="news-date">11/12/2021</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">The research related "Net Zero Energy Structures" with Kyung Hee University is introduced in INU Research Archive.</p>
+        <p class="news-body"><a href="http://www.inu.ac.kr/inuengl/board/researchArchiveView.do?boardSeq=653583" target="_blank" rel="noopener noreferrer">LINK: INU research Archive</a></p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/157660827.jpg" alt="PRESS RELEASE - INU Research Archive">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">CONSULTING - 인천대학교 가족회사 '대윤계기산업(주)' 애로기술 컨설팅 시작</h3>
+        <div class="news-date">9/6/2021</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">이승정 교수가 인천대학교 산학협력단 가족회사 애로기술 컨설팅위원으로 매칭되어 2021년 12월까지 대윤계기산업(주)의 '믹싱된 생콘크리트의 수분량 측정장치 개발' 관련 컨설팅을 진행합니다. 9월 6일에는 대윤계기산업(주)의 서인호 대표님이 인천대를 방문하셔서 첫 번째 컨설팅을 가졌습니다.</p>
+        </div>
+        <div class="news-photos single">
+          <img src="images/news/210906.jpg" alt="CONSULTING - 인천대학교 가족회사 '대윤계기산업(주)' 애로기술 컨설팅 시작">
+        </div>
+      </div>
+      </div>
+      <div class="news-entry">
+        <h3 class="news-title">Getting started</h3>
+        <div class="news-date">9/1/2021</div>
+      <div class="news-row">
+        <div class="news-body-col">
+        <p class="news-body">Smart Material and Structure Lab. is getting started in Incheon National University.</p>
+        </div>
+      </div>
+      </div>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <a href="https://info.flagcounter.com/Ovbp" target="_blank" rel="noopener noreferrer">
+        <img src="https://s05.flagcounter.com/count2/Ovbp/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" style="border:0;">
+      </a>
+    </div>
+  </footer>
+
+  <div class="lightbox-overlay" id="lightboxOverlay">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
+    <img src="" alt="" id="lightboxImg">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&#8250;</button>
+  </div>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menuToggle');
+    var nav = document.getElementById('mainNav');
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+
+  (function(){
+    var siteNav = document.getElementById('siteNav');
+    var heroFade = document.getElementById('heroFade');
+    var heroMedia = document.getElementById('heroMedia');
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ticking = false;
+
+    function update(){
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset;
+      var heroH = heroMedia.offsetHeight;
+
+      siteNav.classList.toggle('is-scrolled', y > 40);
+
+      if(!reduceMotion){
+        var fade = Math.min(1, Math.max(0, y / (heroH * 0.85)));
+        heroFade.style.opacity = fade;
+      }
+    }
+
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    update();
+  })();
+
+  (function(){
+    var overlay = document.getElementById('lightboxOverlay');
+    var overlayImg = document.getElementById('lightboxImg');
+    var closeBtn = document.getElementById('lightboxClose');
+    var prevBtn = document.getElementById('lightboxPrev');
+    var nextBtn = document.getElementById('lightboxNext');
+
+    var currentGroup = [];
+    var currentIndex = 0;
+
+    function showCurrent(){
+      var img = currentGroup[currentIndex];
+      overlayImg.src = img.getAttribute('data-full') || img.src;
+      overlayImg.alt = img.alt || '';
+      var multi = currentGroup.length > 1;
+      prevBtn.style.display = multi ? 'flex' : 'none';
+      nextBtn.style.display = multi ? 'flex' : 'none';
+    }
+    function openLightbox(group, index){
+      currentGroup = group;
+      currentIndex = index;
+      showCurrent();
+      overlay.classList.add('open');
+    }
+    function closeLightbox(){
+      overlay.classList.remove('open');
+      overlayImg.src = '';
+    }
+    function showNext(){
+      currentIndex = (currentIndex + 1) % currentGroup.length;
+      showCurrent();
+    }
+    function showPrev(){
+      currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length;
+      showCurrent();
+    }
+
+    document.querySelectorAll('.photo-thumb').forEach(function(img){
+      img.addEventListener('click', function(){
+        var container = img.closest('.news-photos');
+        var group = Array.prototype.slice.call(container.querySelectorAll('.photo-thumb'));
+        openLightbox(group, group.indexOf(img));
+      });
+    });
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay){ closeLightbox(); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(!overlay.classList.contains('open')) return;
+      if(e.key === 'Escape'){ closeLightbox(); }
+      else if(e.key === 'ArrowRight'){ showNext(); }
+      else if(e.key === 'ArrowLeft'){ showPrev(); }
+    });
+  })();
+</script>
+</body>
+</html>

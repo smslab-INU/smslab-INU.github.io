@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Material and Structure Lab - Members</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3f3f3f;
+    --text:#222222;
+    --accent-gold:#a48f7a;
+    --accent-teal:#24678d;
+    --body-bg:#f2f2f2;
+    --panel-bg:#f7f5f2;
+    --border:#e2ddd6;
+    --max:1180px;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--body-bg);
+    color:var(--text);
+    font-family:'Montserrat', Arial, Helvetica, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+
+  /* ---------- hero / header ---------- */
+  .site-header{ position:relative; }
+  .hero-media{
+    position:relative;
+    height:300px;
+    background-image:url("images/top-banner-members.jpg");
+    background-size:cover;
+    background-position:center 49.89%;
+    overflow:hidden;
+  }
+  .hero-media::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:170px;
+    background:linear-gradient(to bottom, rgba(10,16,22,.55), rgba(10,16,22,0));
+    pointer-events:none;
+  }
+  .hero-fade{
+    position:absolute;
+    inset:0;
+    background:var(--body-bg);
+    opacity:0;
+    pointer-events:none;
+  }
+  .site-nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background-color:rgba(20,30,38,0);
+    box-shadow:0 0 0 rgba(0,0,0,0);
+    transition:background-color .2s ease, box-shadow .2s ease;
+  }
+  .site-nav.is-scrolled{
+    background-color:rgba(255,255,255,.98);
+    box-shadow:0 2px 12px rgba(0,0,0,.12);
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    min-height:66px;
+  }
+  .logo{ flex-shrink:0; }
+  .logo img{ height:44px; width:auto; max-width:none; }
+  .logo-dark{ display:none; }
+  .site-nav.is-scrolled .logo-light{ display:none; }
+  .site-nav.is-scrolled .logo-dark{ display:block; }
+
+  .main-nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .main-nav a{
+    color:#ffffff;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+    white-space:nowrap;
+    transition:color .2s ease, border-color .15s ease, opacity .15s ease;
+  }
+  .main-nav a:hover, .main-nav a.active{
+    border-bottom-color:#ffffff;
+  }
+  .site-nav.is-scrolled .main-nav a{ color:#222222; }
+  .site-nav.is-scrolled .main-nav a:hover,
+  .site-nav.is-scrolled .main-nav a.active{ border-bottom-color:#222222; }
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:26px;
+    line-height:1;
+    cursor:pointer;
+    padding:4px 8px;
+  }
+  .site-nav.is-scrolled .menu-toggle{ color:#222222; }
+
+  /* ---------- page title ---------- */
+  .intro{
+    text-align:center;
+    padding:70px 32px 8px;
+  }
+  .page-title{
+    margin:0 0 8px;
+    font-size:26px;
+    line-height:1.28;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .page-subtitle{
+    margin:0 0 8px;
+    font-size:14px;
+    color:#777;
+  }
+
+  /* ---------- shared page sections ---------- */
+  .page-section{ padding:46px 0; }
+  .intro + .page-section,
+  .page-section + .page-section{ border-top:1px solid var(--border); }
+  .page-section:last-of-type{ border-bottom:1px solid var(--border); }
+  .section-title{
+    margin:0 0 30px;
+    font-size:22px;
+    font-weight:700;
+    color:#000;
+    text-align:center;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:20px 0 40px;
+  }
+  footer .container{
+    display:flex;
+    justify-content:flex-end;
+  }
+
+.member-block{ max-width:920px; margin:0 auto; }
+  .member-card{
+    display:flex;
+    gap:28px;
+    align-items:flex-start;
+    margin-bottom:38px;
+  }
+  .member-photo{
+    flex-shrink:0;
+    width:320px;
+    max-width:100%;
+    border-radius:6px;
+    overflow:hidden;
+    background:#e2ddd6;
+  }
+  .member-photo img{ width:100%; height:auto; display:block; }
+  .member-info{ flex:1; min-width:0; }
+  .member-name{
+    margin:0 0 2px;
+    font-size:17px;
+    font-weight:700;
+    color:#222;
+  }
+  .member-role{
+    margin:0 0 10px;
+    font-size:13px;
+    color:var(--accent-teal);
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .member-meta{
+    margin:0;
+    padding:0;
+    list-style:none;
+    font-size:13.5px;
+    color:#444;
+    line-height:1.8;
+  }
+  .member-meta li span{ color:#888; margin-right:6px; }
+  .member-meta a{ color:var(--accent-teal); }
+  .member-meta a:hover{ text-decoration:underline; }
+  .member-research{
+    margin:8px 0 0;
+    font-size:13.5px;
+    color:#444;
+  }
+
+  .former-group{ max-width:920px; margin:0 auto; }
+  .subsection-title{
+    margin:0 0 20px;
+    font-size:22px;
+    font-weight:700;
+    color:#000;
+    text-align:left;
+  }
+  .former-group .subsection-title:not(:first-child){ margin-top:44px; }
+  .former-card{ margin-bottom:30px; }
+  .former-name{
+    margin:0 0 4px;
+    font-size:17px;
+    font-weight:700;
+    color:#222;
+  }
+  .former-detail{
+    margin:2px 0;
+    font-size:13.5px;
+    color:#444;
+    line-height:1.7;
+  }
+
+  .find-more-wrap{ text-align:center; margin-top:16px; }
+  .find-more-btn{
+    display:inline-block;
+    padding:9px 20px;
+    border:1px solid var(--accent-teal);
+    border-radius:4px;
+    color:var(--accent-teal);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.02em;
+    transition:background-color .15s ease, color .15s ease;
+  }
+  .find-more-btn:hover{ background:var(--accent-teal); color:#fff; }
+
+  @media (max-width:600px){
+    .member-card{ flex-direction:column; align-items:center; text-align:center; }
+    .member-meta{ text-align:left; }
+  }
+
+  /* ---------- mobile ---------- */
+  @media (max-width:980px){
+    .hero-media{ height:148px; background-attachment:scroll; }
+    .header-row{ padding:14px 20px; position:relative; }
+    .logo img{ height:34px; }
+    .menu-toggle{ display:block; }
+    .main-nav{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:rgba(20,25,30,.98);
+      display:none;
+      flex-direction:column;
+    }
+    .main-nav.open{ display:flex; }
+    .main-nav ul{
+      flex-direction:column;
+      gap:0;
+      padding:6px 0;
+    }
+    .main-nav li{ border-top:1px solid rgba(255,255,255,.12); }
+    .main-nav a{
+      display:block;
+      padding:14px 20px;
+      border-bottom:none;
+    }
+    .main-nav a.active{ color:var(--accent-gold); }
+    .site-nav.is-scrolled .main-nav a{ color:#ffffff; }
+    .site-nav.is-scrolled .main-nav a.active{ color:var(--accent-gold); }
+
+    .container{ padding:0 20px; }
+    .intro{ padding:50px 20px 4px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="hero-media" id="heroMedia">
+      <div class="hero-fade" id="heroFade"></div>
+    </div>
+    <div class="site-nav" id="siteNav">
+      <div class="header-row">
+        <a href="index.html" class="logo">
+          <img src="images/logo-white.png" class="logo-light" alt="Smart Material and Structure Lab">
+          <img src="images/logo-color.png" class="logo-dark" alt="Smart Material and Structure Lab">
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+        <nav class="main-nav" id="mainNav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">RESEARCH</a></li>
+            <li><a href="research-achivement.html">RESEARCH ACHIVEMENT</a></li>
+            <li><a href="members.html" class="active">MEMBERS</a></li>
+            <li><a href="opening.html">OPENING</a></li>
+            <li><a href="lecture.html">LECTURE</a></li>
+            <li><a href="news.html">NEWS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro container">
+      <h1 class="page-title">MEMBERS</h1>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <h2 class="section-title">FACULTY</h2>
+        <div class="member-block">
+      <div class="member-card">
+        <div class="member-photo"><img src="images/members/pi.jpg" alt="Seung-Jung Lee, Ph.D."></div>
+        <div class="member-info">
+          <h3 class="member-name">이승정 Seung-Jung Lee, Ph.D.</h3>
+          <p class="member-role">Associate Professor · Principal Investigator (PI)</p>
+          <ul class="member-meta">
+          <li><span>Office</span>Room 343, Building 8 (8호관 343호)</li>
+          <li><span>Phone</span>+82-32-835-8467</li>
+          <li><span>E-mail</span><a href="mailto:seungjung@inu.ac.kr">seungjung@inu.ac.kr</a>; <a href="mailto:mail.to.SeungJung@gmail.com">mail.to.SeungJung@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="find-more-wrap">
+        <a class="find-more-btn" href="faculty.html">Find out more</a>
+      </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <h2 class="section-title">GRADUATE STUDENTS</h2>
+        <div class="member-block">
+      <div class="member-card">
+        <div class="member-photo"><img src="images/members/dongsub.jpg" alt="Dongsub Jung"></div>
+        <div class="member-info">
+          <h3 class="member-name">정동섭 Dongsub Jung</h3>
+          <p class="member-role">Master course · Dept. of Civil and Environmental Engineering, Incheon National University</p>
+          <ul class="member-meta">
+          <li><span>Phone</span>+82-32-835-4243</li>
+          <li><span>E-mail</span><a href="mailto:jds1245@naver.com">jds1245@naver.com</a></li>
+          </ul>
+        <p class="member-research">Research topic: self-sensing grouting materials, cement-based anisotropic stress sensing</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo"><img src="images/members/junyoung.jpg" alt="Junyoung Lee"></div>
+        <div class="member-info">
+          <h3 class="member-name">이준영 Junyoung Lee</h3>
+          <p class="member-role">Master course · Dept. of Civil and Environmental Engineering, Incheon National University</p>
+          <ul class="member-meta">
+          <li><span>E-mail</span><a href="mailto:june0813@inu.ac.kr">june0813@inu.ac.kr</a></li>
+          </ul>
+        <p class="member-research">Research topic: Net-Zero Energy Structures, cement-based structural capacitor</p>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <h2 class="section-title">UNDERGRADUATE RESEARCHERS</h2>
+        <div class="member-block">
+      <div class="member-card">
+        <div class="member-photo"></div>
+        <div class="member-info">
+          <h3 class="member-name">정승현 Seung Hyun Jeong</h3>
+          <p class="member-role">Undergraduate student · Dept. of Civil and Environmental Engineering, Incheon National University</p>
+          <ul class="member-meta">
+          <li><span>E-mail</span><a href="mailto:blackdoves26@inu.ac.kr">blackdoves26@inu.ac.kr</a></li>
+          </ul>
+        <p class="member-research">Research topic: digital twin based virtual sensors for SHM</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo"></div>
+        <div class="member-info">
+          <h3 class="member-name">임재현 Jaehyun Lim</h3>
+          <p class="member-role">Undergraduate student · Dept. of Civil and Environmental Engineering, Incheon National University</p>
+          <ul class="member-meta">
+          <li><span>Phone</span>+82-32-835-4243</li>
+          <li><span>E-mail</span><a href="mailto:ch9252og@inu.ac.kr">ch9252og@inu.ac.kr</a></li>
+          </ul>
+        <p class="member-research">Research topic: bioelectrochemical cement-based structural capacitor</p>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <h2 class="section-title">FORMER RESEARCHERS</h2>
+        <div class="former-group">
+
+          <h3 class="subsection-title">Postdoctoral Researchers</h3>
+          <div class="former-card">
+            <p class="former-name">유일환 Ilhwan You, Ph.D.</p>
+            <p class="former-detail">Ph. D. School of Civil, Environmental &amp; Architectural Engineering, Korea University, 2019</p>
+            <p class="former-detail">Research topic: durability of cement composites, glass powder for cement composites, self-sensing concrete</p>
+            <p class="former-detail">Current: Assistant Professor, Rural Construction Engineering Department, Jeonbuk National University</p>
+          </div>
+
+          <h3 class="subsection-title">Master Students</h3>
+          <div class="former-card">
+            <p class="former-name">성지혜 Jihye Sung</p>
+            <p class="former-detail">MS, Dept. of Civil and Environmental Engineering, Incheon National University, 2026</p>
+            <p class="former-detail">BS, Dept. of Civil and Environmental Engineering, Incheon National University, 2024</p>
+            <p class="former-detail">Research topic: self-sensing concrete, machine-learning based prediction for properties of cement-based material</p>
+            <p class="former-detail">Thesis: 전도성 콘크리트 전기전도도 예측을 위한 데이터 증강 및 하이퍼파라미터 최적화 기법 비교 분석, Comparative analysis of data augmentation and hyperparameter optimization techniques for predicting the electrical conductivity of conductive concrete</p>
+            <p class="former-detail">Current: TESO Engineering</p>
+          </div>
+          <div class="former-card">
+            <p class="former-name">이영은 Young-Eun Lee</p>
+            <p class="former-detail">MS, Dept. of Civil and Environmental Engineering, Incheon National University, 2026</p>
+            <p class="former-detail">BS, Dept. of Civil and Environmental Engineering, Incheon National University, 2024</p>
+            <p class="former-detail">Research topic: Net-Zero Energy Structures, cement-based structural capacitor</p>
+            <p class="former-detail">Thesis: 마찰대전 나노발전기를 이용한 전도성 시멘트 복합재 에너지 수확에 관한 실험적 연구, An experimental study of energy harvesting from conductive cement composites using a triboelectric nanogenerator</p>
+            <p class="former-detail">Current: Daewoo Engineering &amp; Construction</p>
+          </div>
+          <div class="former-card">
+            <p class="former-name">Sande Francis Okumu</p>
+            <p class="former-detail">MS (KOICA-Incheon National University Master's Degree Program), Dept. of International Climate Cooperation, Incheon National University, 2024</p>
+            <p class="former-detail">Research topic: Effect of Seasonal Changes in Rainfall Patterns on Livelihood, Food Availability and Accessibility among Smallholder Farmers (A Case Study of Busia District, Uganda)</p>
+            <p class="former-detail">Current: Ministry of Agriculture, Animal Industry and Fisheries, The Republic of Uganda</p>
+          </div>
+          <div class="former-card">
+            <p class="former-name">Francis Secret Kadzokoya</p>
+            <p class="former-detail">MS (KOICA-Incheon National University Master's Degree Program), Dept. of International Climate Cooperation, Incheon National University, 2025</p>
+            <p class="former-detail">Research topic: Assessment of resettlement as adaptation strategy for climate change: A comparative analysis case of Malawi</p>
+          </div>
+
+          <h3 class="subsection-title">Undergraduate Students</h3>
+          <div class="former-card">
+            <p class="former-name">강윤종 Yunjong Kang</p>
+            <p class="former-detail">BS, Dept. of Civil and Environmental Engineering, Incheon National University, 2024</p>
+            <p class="former-detail">Research topic: self-sensing grouting materials</p>
+          </div>
+          <div class="former-card">
+            <p class="former-name">전성혁 SeongHyeok Jeon</p>
+            <p class="former-detail">BS, Dept. of Civil and Environmental Engineering, Incheon National University, 2025</p>
+            <p class="former-detail">Research topic: Energy harvesting technology</p>
+            <p class="former-detail">Current: SGC E&amp;C</p>
+          </div>
+          <div class="former-card">
+            <p class="former-name">민지원 Jiwon Min</p>
+            <p class="former-detail">BS, Dept. of Civil and Environmental Engineering, Incheon National University, 2025</p>
+            <p class="former-detail">Research topic: Energy harvesting technology and wireless sensing system</p>
+            <p class="former-detail">Current: SGC E&amp;C</p>
+          </div>
+          <div class="former-card">
+            <p class="former-name">전규민 Gyumin Jeon</p>
+            <p class="former-detail">BS, Dept. of Civil and Environmental Engineering, Incheon National University, 2026</p>
+            <p class="former-detail">Research topic: Net-Zero Energy Structures</p>
+          </div>
+          <div class="former-card">
+            <p class="former-name">이경훈 Kyunghun Lee</p>
+            <p class="former-detail">Undergraduate student, Dept. of Civil and Environmental Engineering, Incheon National University</p>
+          </div>
+          <div class="former-card">
+            <p class="former-name">배한준 Hanjun Bae</p>
+            <p class="former-detail">Undergraduate student, Dept. of Civil and Environmental Engineering, Incheon National University</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <a href="https://info.flagcounter.com/Ovbp" target="_blank" rel="noopener noreferrer">
+        <img src="https://s05.flagcounter.com/count2/Ovbp/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" style="border:0;">
+      </a>
+    </div>
+  </footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menuToggle');
+    var nav = document.getElementById('mainNav');
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+
+  (function(){
+    var siteNav = document.getElementById('siteNav');
+    var heroFade = document.getElementById('heroFade');
+    var heroMedia = document.getElementById('heroMedia');
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ticking = false;
+
+    function update(){
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset;
+      var heroH = heroMedia.offsetHeight;
+
+      siteNav.classList.toggle('is-scrolled', y > 40);
+
+      if(!reduceMotion){
+        var fade = Math.min(1, Math.max(0, y / (heroH * 0.85)));
+        heroFade.style.opacity = fade;
+      }
+    }
+
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    update();
+  })();
+</script>
+</body>
+</html>

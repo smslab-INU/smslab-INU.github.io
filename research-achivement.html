@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Material and Structure Lab - Research Achievement</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --ink:#3f3f3f;
+    --text:#222222;
+    --accent-gold:#a48f7a;
+    --accent-teal:#24678d;
+    --body-bg:#f2f2f2;
+    --panel-bg:#f7f5f2;
+    --border:#e2ddd6;
+    --max:1180px;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--body-bg);
+    color:var(--text);
+    font-family:'Montserrat', Arial, Helvetica, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+
+  /* ---------- hero / header ---------- */
+  .site-header{ position:relative; }
+  .hero-media{
+    position:relative;
+    height:300px;
+    background-image:url("images/top-banner-research-achivement.jpg");
+    background-size:cover;
+    background-position:0% 63.45%;
+    overflow:hidden;
+  }
+  .hero-media::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:170px;
+    background:linear-gradient(to bottom, rgba(10,16,22,.55), rgba(10,16,22,0));
+    pointer-events:none;
+  }
+  .hero-fade{
+    position:absolute;
+    inset:0;
+    background:var(--body-bg);
+    opacity:0;
+    pointer-events:none;
+  }
+  .site-nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background-color:rgba(20,30,38,0);
+    box-shadow:0 0 0 rgba(0,0,0,0);
+    transition:background-color .2s ease, box-shadow .2s ease;
+  }
+  .site-nav.is-scrolled{
+    background-color:rgba(255,255,255,.98);
+    box-shadow:0 2px 12px rgba(0,0,0,.12);
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    min-height:66px;
+  }
+  .logo{ flex-shrink:0; }
+  .logo img{ height:44px; width:auto; max-width:none; }
+  .logo-dark{ display:none; }
+  .site-nav.is-scrolled .logo-light{ display:none; }
+  .site-nav.is-scrolled .logo-dark{ display:block; }
+
+  .main-nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .main-nav a{
+    color:#ffffff;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+    white-space:nowrap;
+    transition:color .2s ease, border-color .15s ease, opacity .15s ease;
+  }
+  .main-nav a:hover, .main-nav a.active{
+    border-bottom-color:#ffffff;
+  }
+  .site-nav.is-scrolled .main-nav a{ color:#222222; }
+  .site-nav.is-scrolled .main-nav a:hover,
+  .site-nav.is-scrolled .main-nav a.active{ border-bottom-color:#222222; }
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:26px;
+    line-height:1;
+    cursor:pointer;
+    padding:4px 8px;
+  }
+  .site-nav.is-scrolled .menu-toggle{ color:#222222; }
+
+  /* ---------- page title ---------- */
+  .intro{
+    text-align:center;
+    padding:70px 32px 8px;
+  }
+  .page-title{
+    margin:0 0 8px;
+    font-size:26px;
+    line-height:1.28;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .page-subtitle{
+    margin:0 0 8px;
+    font-size:14px;
+    color:#777;
+  }
+
+  /* ---------- shared page sections ---------- */
+  .page-section{ padding:46px 0; }
+  .intro + .page-section,
+  .page-section + .page-section{ border-top:1px solid var(--border); }
+  .page-section:last-of-type{ border-bottom:1px solid var(--border); }
+  .section-title{
+    margin:0 0 30px;
+    font-size:22px;
+    font-weight:700;
+    color:#000;
+    text-align:center;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:20px 0 40px;
+  }
+  footer .container{
+    display:flex;
+    justify-content:flex-end;
+  }
+
+.pub-note{
+    max-width:980px;
+    margin:0 auto 18px;
+    font-size:12px;
+    color:#777;
+    text-align:left;
+  }
+  .pub-list{
+    list-style:disc;
+    margin:0;
+    padding-left:22px;
+    max-width:980px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .pub-item{
+    margin:12px 0;
+    font-size:14px;
+    line-height:1.7;
+    color:#333;
+  }
+  .pub-item a{
+    color:var(--accent-teal);
+  }
+  .pub-item a:hover{ text-decoration:underline; }
+  .pub-item u{ text-decoration:underline; text-decoration-color:#999; }
+  .pub-item em{ font-style:italic; color:#222; }
+  .pub-item strong{ font-weight:700; color:#222; }
+  .pub-item .pub-if{ color:#ff0000; }
+
+  /* ---------- mobile ---------- */
+  @media (max-width:980px){
+    .hero-media{ height:148px; background-attachment:scroll; }
+    .header-row{ padding:14px 20px; position:relative; }
+    .logo img{ height:34px; }
+    .menu-toggle{ display:block; }
+    .main-nav{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:rgba(20,25,30,.98);
+      display:none;
+      flex-direction:column;
+    }
+    .main-nav.open{ display:flex; }
+    .main-nav ul{
+      flex-direction:column;
+      gap:0;
+      padding:6px 0;
+    }
+    .main-nav li{ border-top:1px solid rgba(255,255,255,.12); }
+    .main-nav a{
+      display:block;
+      padding:14px 20px;
+      border-bottom:none;
+    }
+    .main-nav a.active{ color:var(--accent-gold); }
+    .site-nav.is-scrolled .main-nav a{ color:#ffffff; }
+    .site-nav.is-scrolled .main-nav a.active{ color:var(--accent-gold); }
+
+    .container{ padding:0 20px; }
+    .intro{ padding:50px 20px 4px; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+<div class="hero-media" id="heroMedia">
+<div class="hero-fade" id="heroFade"></div>
+</div>
+<div class="site-nav" id="siteNav">
+<div class="header-row">
+<a class="logo" href="index.html">
+<img alt="Smart Material and Structure Lab" class="logo-light" src="images/logo-white.png"/>
+<img alt="Smart Material and Structure Lab" class="logo-dark" src="images/logo-color.png"/>
+</a>
+<button aria-expanded="false" aria-label="Menu" class="menu-toggle" id="menuToggle">☰</button>
+<nav class="main-nav" id="mainNav">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="research.html">RESEARCH</a></li>
+<li><a class="active" href="research-achivement.html">RESEARCH ACHIVEMENT</a></li>
+<li><a href="members.html">MEMBERS</a></li>
+<li><a href="opening.html">OPENING</a></li>
+<li><a href="lecture.html">LECTURE</a></li>
+<li><a href="news.html">NEWS</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<main>
+<div class="intro container">
+<h1 class="page-title">RESEARCH ACHIVEMENT</h1>
+</div>
+<div class="page-section">
+<div class="container">
+<h2 class="section-title">International Journal Articles</h2>
+<p class="pub-note">Note: corresponding authors are underlined.</p>
+<ul class="pub-list"><li class="pub-item"><strong>Lee, S.-J.</strong>, You, I., Yoo, D.-Y., Lee, S., and <u>Choi, K.</u> Percolation analysis of cement composites with hybrid carbon fibers and nanotubes. In preparation</li>
+<li class="pub-item">Kumar, N., <u><strong>Lee, S.-J.</strong></u>, You, I., and <u>Kim, J.-G.</u> Self-sensing concrete containing multi-walled carbon nanotubes: Electromechanical modeling using multiscale approach. In preparation.</li>
+<li class="pub-item">Shin, H.-O., Kim, S., Min, K., Kim, Y., and <u><strong>Lee, S.-J.</strong></u> Benefits of GFRP rebars and steel fibers on the impact performance of concrete sleepers. In preparation.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, Oh, S.-S., Oh, H., Moon, D.-Y., and <u>Shin, H.-O.</u> Effects of GFRP rebars and steel fibers on the electrical and static performance of concrete slab track. In preparation.</li>
+<li class="pub-item">You, I., <strong>Lee, S.-J.</strong>, Yoon, Y.-S., and Zi, G. Roles of liquid crystal display glass powder and soda-lime glass powder as supplementary cementitious materials on strength development and alkali–silica reaction mitigation. In preparation.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Park, J.</u>, You, I., Hwang, S.-S., and Lim, J. Static performance of composite lightweight economy seat for large civil aircraft. In preparation.</li>
+<li class="pub-item">Jeong, D.-S., <u>Park, J.</u>, Lee, H., <u>You, I.</u> and <strong><u>Lee, S.-J.</u></strong> Self-sensing performance of conductive grout containing MWCNTs. In preparation.</li>
+<li class="pub-item">Sung, J*. Kang, M.-C.*, Hu, J. W., <u>You, I.</u>, <u>Pyo, S.</u>, and <strong><u>Lee, S.-J.</u></strong> Enhancing machine learning-based prediction of electrical conductivity in cementitious composites. <em>International Journal of Concrete Structures and Materials</em>. Accepted; * indicates equal contribution</li>
+<li class="pub-item">Lee, Y.-E.*, Lee, D.*, Sung, J. H., <u>You, I.</u>, <u>Choi, D.</u>, and <u><strong>Lee, S.-J.</strong></u> Study of energy harvesting from conductive cement nanocomposites using a triboelectric nanogenerator. <em>Developments in the Built Environment </em>25: 100854, 03/2026. (<span class="pub-if">IF 8.2, JCR 2024, Q1, Top 3.5% in Engineering, Civil</span>) <a href="https://doi.org/10.1016/j.dibe.2026.100854" rel="noopener noreferrer" target="_blank">link</a>; * indicates equal contribution</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Park, J.</u>, Sung, J., Kim, B.-K., Lee, H. U., and <u>You, I.</u> Conductive grout with multiwalled carbon nanotubes for water cutoff self-monitoring in underground tunnels. <em>Nondestructive Testing and Evaluation</em>. <a href="https://doi.org/10.1080/10589759.2025.2491741" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Kaloop, M. R., Elsayed, M., Eldessouki, M., <u>Hu, J. W.</u>, <strong>Lee, S.-J.</strong>, and Rashidy, N. E. L. Enhancement framework for modeling sediment discharge in rivers using novel supervised deep learning approaches. <em>Journal of Soils and Sediments</em> 25: 2777-2796, 08/2025. <a href="https://doi.org/10.1007/s11368-025-04111-w" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Piao, R., Lee, D., Woo, S. Y., Jeong, J.-W., <u><strong>Lee, S.-J.</strong></u>, and <u>Yoo, D.-Y.</u> Carbon material-based thermoelectric ultra-high-performance alkali-activated concrete. <em>Composites Part B: Engineering</em> 297: 112279, 05/2025. (<span class="pub-if">IF 12.7, JCR 2023, Q1, Top 1(0.3%) in Engineering, Multidisciplinary</span>) <a href="https://doi.org/10.1016/j.compositesb.2025.112279" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Choi, Y., and<strong> <u>Lee, S.-J.</u></strong> Probabilistic fatigue crack growth prediction for pipelines with initial flaws. <em>Buildings </em>14(6): 1775, 06/2024. (IF 3.8, JCR 2022) <a href="https://www.mdpi.com/2075-5309/14/6/1775" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Kang, M.-C., Lee, B., Kang, M., <strong><u>Lee, S.-J.</u></strong>, and <u>Pyo, S.</u> Self-sensing properties of cementless ultra-high-performance concrete (UHPC) with slag aggregates. <em>Journal of Building Engineering</em> 86: 108863, 06/2024. (<span class="pub-if">IF 6.4, JCR 2022, Q1, Top 9.0% in Engineering, Civil</span>) <a href="https://doi.org/10.1016/j.jobe.2024.108863" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Ra, Y.*, Kim, J. W.*, You, I., Jang, S., Cho, S., Gwon, G., Kam, D., Lee, D., Ahmad, A., Karim, M. R., <u><strong>Lee, S.-J.</strong></u>, and <u>Choi, D.</u> Direct electrospinning of reconstructable PVDF-TrFE nanofibrous mat onto conductive cement nanocomposite for triboelectricity-assisted net zero energy structure. <em>Chemical Engineering Journal </em>485: 149662, 04/2024. (<span class="pub-if">IF 15.1, JCR 2022, Q1, Top 3.2% in Engineering, Chemical</span>) <a href="https://doi.org/10.1016/j.cej.2024.149662" rel="noopener noreferrer" target="_blank">link</a>; * indicates equal contribution</li>
+<li class="pub-item">Yoo, D.-Y., Banthia, N., <u>You, I.</u>, and <u><strong>Lee, S.-J.</strong></u> Recent advances in cementless ultra-high-performance concrete using alkali-activated materials and industrial byproducts: A review. <em>Cement and Concrete Composites</em> 148: 105470, 04/2024. (<span class="pub-if">IF 10.5, JCR 2022, Q1, Top 3.7% in Construction &amp; Building Technology</span>) <a href="https://doi.org/10.1016/j.cemconcomp.2024.105470" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yoo, D.-Y., Soleimani-Dashtaki, S., Oh, T., Chun, B., Banthia, N., <u><strong>Lee, S.-J.</strong></u>, and <u>Yoon, Y.-S.</u> Strain-hardening effect on the flexural behavior of ultra-high-performance fiber-reinforced concrete beams with steel rebars. <em>Developments in the Built Environment</em> 17: 100343, 03/2024. (<span class="pub-if">IF 8.2, JCR 2022, Q1, Top 3.2% in Engineering, Civil</span>) <a href="https://doi.org/10.1016/j.dibe.2024.100343" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">You, I., Seo, S., Kim, M., <strong>Lee, S.-J.</strong>, Lee, N., <u>Lee, Y.</u>, and <u>Yoo, D.-Y.</u> ASR potential of alkali-activated soda-lime glass powder in the absence of calcium sources. <em>Cement and Concrete Composites </em>139: 105027, 05/2023. (IF 9.93, JCR 2021) <a href="https://doi.org/10.1016/j.cemconcomp.2023.105027" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">You, I., Yoo, D.-Y., <strong>Lee, S.-J.</strong>, <u>Lee, Y.</u>, and <u>Zi, G.</u> A combination of liquid-crystal display glass powder and slag in alkali-activated synthetic. <em>Construction and Building Materials</em> 369: 130527, 03/2023. (IF 7.693, JCR 2021) <a href="https://doi.org/10.1016/j.conbuildmat.2023.130527" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>You, I.</u>, Kim, S., Shin, H.-O., and <u>Yoo, D.-Y.</u> Self-sensing capacity of ultra-high-performance concrete containing steel fibers and conductive powders in tension. <em>Cement and Concrete Composites</em> 125: 104331, 01/2022. (<span class="pub-if">IF 9.930, JCR 2021, Q1, Top 6.62% in Construction &amp; Building Technology</span>) <a href="https://doi.org/10.1016/j.cemconcomp.2021.104331" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Ra. Y.*, You, I.*, Kim, M., Jang, S., Cho, S., Kam, D., <u><strong>Lee, S.-J.</strong></u>, and <u>Choi, D.</u> Toward smart net zero energy structures: development of cement-based structural energy material for contact electrification driven energy harvesting and storage. <em>Nano Energy</em> 89A: 106389, 11/2021. (<span class="pub-if">IF 17.881, JCR 2020, Q1. Top 4.64% in Materials Science, Multidisciplinary</span>) <a href="https://doi.org/10.1016/j.nanoen.2021.106389" rel="noopener noreferrer" target="_blank">link</a> * indicates equal contribution</li>
+<li class="pub-item">You, I., <u><strong>Lee, S.-J.</strong></u>, Zi, G., and Lim D. Influence of carbon fiber incorporation on electrical conductivity of cement composites. <em>Applied Sciences</em> 10(24): 8993, 12/2020. (IF 2.679) <a href="https://doi.org/10.3390/app10248993" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>An, D.</u>, You, I., Yoo, D.-Y., and Kang, Y. S. Wireless cement-based sensor for self-monitoring of railway concrete. <em>Automation in Construction</em> 119: 103323, 11/2020. (<span class="pub-if">IF 7.700, JCR 2020, Q1, Top 2(1.09%) in Engineering, Civil</span>) <a href="https://doi.org/10.1016/j.autcon.2020.103323" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Lee, J. H., Choi, Y., Ann, H., Jin, S. Y., <strong>Lee, S.-J.</strong>, and <u>Kong, J. S.</u> Maintenance cost estimation in PSCI girder bridges using updating probabilistic deterioration model. <em>Sustainability</em> 11: 6593, 11/2019. (IF 3.251) <a href="http://dx.doi.org/10.3390/su11236593" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yoo, D.-Y., Kim, S., Lee, J.-Y., <u>You, I.</u>, and <u><strong>Lee, S.-J</strong></u>. Implication of calcium sulfoaluminate-based expansive agent on tensile behavior of ultra-high-performance fiber-reinforced concrete. <em>Construction and Building Materials</em> 217: 679–693, 08/2019. (<span class="pub-if">IF 6.141, JCR 2020, Q1, Top 4.74% in Engineering, Civil</span>) <a href="https://doi.org/10.1016/j.conbuildmat.2019.05.071" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Moon, D. Y.</u>, and <u>Yoo, D.-Y.</u> Effects of hooked steel fiber geometry and volume fraction on the flexural behavior of concrete pedestrian decks. A<em>pplied Sciences</em> 9(6): 1241, 03/2019. (IF 2.679) <a href="https://doi.org/10.3390/app9061241" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yoo, D.-Y., You, I., Zi, G., and <u><strong>Lee, S.-J.</strong></u> Effect of carbon nanomaterial type and amount on self-sensing capacity of cement paste. <em>Measurement</em> 134: 750–761, 02/2019. (IF 3.927) <a href="https://doi.org/10.1016/j.measurement.2018.11.024" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Jeong, M. C. <strong>Lee, S.-J.</strong>, Cha, K., Zi, G., and <u>Kong, J. S.</u> Probabilistic model forecasting for rail wear in Seoul metro based on Bayesian theory. <em>Engineering Failure Analysis</em> 96: 202–210, 02/2019. (IF 3.114) <a href="https://doi.org/10.1016/j.engfailanal.2018.10.001" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Shin, H.-O., <strong>Lee, S.-J.</strong>, and <u>Yoo, D.-Y.</u> Bond behavior of pretensioned strand embedded in ultra-high-performance fiber-reinforced concrete. <em>International Journal of Concrete Structures and Materials</em> 12(1): 34, 12/2018. (IF 2.483) <a href="https://link.springer.com/article/10.1186/s40069-018-0249-4" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yoo, D.-Y., You, I., Youn, H., and <u><strong>Lee, S.-J.</strong></u> Electrical and piezoresistive properties of cement composites with carbon nanomaterials. <em>Journal of Composite Materials</em> 52(24): 3325–3340, 10/2018. (IF 2.591) <a href="https://doi.org/10.1177%2F0021998318764809" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J</strong>., Cho, W.-Y., Kim, K.-S., Zi, G., and <u>Yoon, Y.-C</u>. Numerical evaluation of compressive strain capacity for API X100 line pipe. <em>KSCE Journal of Civil Engineering</em> 22(8): 3039–3051, 08/2018. (IF 1.805) <a href="https://link.springer.com/article/10.1007/s12205-017-0445-9" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Moon, D. Y.</u>, Ahn, C.-H., Lee, J.-W., and Zi, G. A precast slab track partially reinforced with GFRP rebars. <em>Computers and Concrete</em> 21(3): 239–248, 03/2018. (IF 3.948) <a href="https://doi.org/10.12989/cac.2018.21.3.239" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yoo, D.-Y., You, I., and <strong><u>Lee, S.-J.</u></strong> Electrical and piezoresistive sensing capacities of cement paste with multi-walled carbon nanotubes. <em>Archives of Civil and Mechanical Engineering</em> 18(2): 371–384, 02/2018. (IF 4.369) <a href="https://doi.org/10.1016/j.acme.2017.09.007" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, You, I., Zi, G., and <u>Yoo, D.-Y.</u> Experimental investigation of piezoresistive properties of cement composites with hybrid carbon fibers and nanotubes. <em>Sensors</em> 17(11): 2516, 11/2017. (IF 3.576) <a href="https://doi.org/10.3390/s17112516" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yoo, D.-Y., You, I., and <u><strong>Lee, S.-J.</strong></u> Electrical properties of cement-based composites with carbon nanotubes, graphene, and graphite nanofibers. <em>Sensors</em> 17(5): 1064, 05/2017. (IF 3.576) <a href="https://doi.org/10.3390/s17051064" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yun, J., Lim, Y., Jang, G. N., Kim, D. <strong>Lee, S.-J.</strong>, Park, H., Hong, S. Y., Lee, G. Zi, G., and <u>Ha, J. S.</u> Stretchable patterned graphene gas sensor driven by integrated micro-supercapacitor array. <em>Nano Energy</em> 19: 401–414, 01/2016. (<span class="pub-if">IF 17.881, JCR 2020, Q1, Top 4.64% in Materials Science, Multidisciplinary</span>) <a href="https://doi.org/10.1016/j.nanoen.2015.11.023" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Kim, D., Kim, D., Lee, H., Jeong, Y. R., <strong>Lee, S.-J.</strong>, Yang, G., Kim, H., Lee, G., Jeon, S., Zi, G., Kim, J., and <u>Ha, J. S.</u> Body-attachable and stretchable multisensors integrated with wirelessly rechargeable energy storage devices. <em>Advanced Materials</em> 28(4): 748–756, 01/2016. (<span class="pub-if">IF 30.849, JCR 2020, Q1, Top 2.16% in Chemistry, Physical</span>) <a href="https://doi.org/10.1002/adma.201504335" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Park, H., Jeong, Y. R., Yun, J., Hong, S. Y., Jin, S. W., <strong>Lee, S.-J.</strong>, Zi, G., and <u>Ha, J. S.</u> Stretchabe array of highly sensitive pressure sensors consisting of Polyaniline nanofibers and Au-coated polydimethylsiloxane micropillars. <em>ACS Nano</em> 9(10): 9974–9985, 09/2015. (IF 15.881, Top 6.14% in Materials Science, Multidisciplinary) <a href="https://doi.org/10.1021/acsnano.5b03510" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.,</strong> <u>Zi, G.</u>, Mun, S., Kong, J. S., and Choi, J. H. Probabilistic prognosis of fatigue crack growth for asphalt concretes. <em>Engineering Fracture Mechanics</em> 141: 212–229, 06/2015. (IF 4.406) <a href="https://doi.org/10.1016/j.engfracmech.2015.04.033" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><u>Mun, S.</u>, and <strong>Lee, S.-J.</strong> Bayesian method to determine the dynamic material characteristics of hot-mix asphalt. <em>Journal of Materials in Civil Engineering–ASCE</em> 27(4): 04014153, 04/2015. (IF 3.266) <a href="https://doi.org/10.1061/(ASCE)MT.1943-5533.0001098" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Lim, Y., Yoon, J., Yun, J., Kim, D., Hong, S. Y., <strong>Lee, S.-J.</strong>, Zi, G., and <u>Ha, J. S.</u> Biaxially stretchable, integrated array of high performance microsupercapacitors. <em>ACS Nano</em> 8(11): 11639–11650, 11/2014. (IF 15.881, Top 6.14% in Materials Science, Multidisciplinary) <a href="https://doi.org/10.1021/nn504925s" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yoon, J., Hong, S. Y., Lim, Y., <strong>Lee, S.-J.</strong>, Zi, G., and <u>Ha, J. S.</u> Design and fabrication of novel stretchable device arrays on a deformable polymer substrate with embedded liquid metal interconnections. <em>Advanced Materials</em> 26(38): 6580–6586, 10/2014. (<span class="pub-if">IF 30.849, JCR 2020, Q1, Top 2.16% in Chemistry, Physical</span>) <a href="https://doi.org/10.1002/adma.201402588" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Hong, S. Y., Yoon, J., Jin, S. W., Lim, Y., <strong>Lee, S.-J.</strong>, Zi, G., and <u>Ha, J. S.</u> High-density, stretchable, all-solid-state microsupercapacitor arrays. <em>ACS Nano </em>8(9): 8844–8855, 09/2014. (IF 15.881, Top 6.14% in Materials Science, Multidisciplinary) <a href="https://doi.org/10.1021/nn503799j" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Yoon, J., Shin, G., Kim, J., Moon, Y. S., <strong>Lee, S.-J.</strong>, Zi, G., and <u>Ha, J. S.</u> Fabrication of stretchable single-walled carbon nanotube logic devices. <em>Small </em>10(14): 2910–2917, 07/2014. (IF 13.281, Top 6.56% in Physics, Applied) <a href="https://doi.org/10.1002/smll.201303779" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Kim, D., Shin, G., Yoon, J., Jang, D, <strong>Lee, S.-J.</strong>, Zi, G., and <u>Ha, J. S.</u> High performance stretchable UV sensor arrays of SnO2 nanowires. <em>Nanotechnology</em> 24(31): 315502, 07/2013. (IF 3.874) <a href="https://iopscience.iop.org/article/10.1088/0957-4484/24/31/315502" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Kim, J., Yi, C., <strong>Lee, S.-J.</strong>, and<u> Zi, G.</u> Flexural fatigue behavior of concrete under uniaxial and biaxial stress. <em>Magazine of concrete research</em> 65(12): 757–764, 06/2013. (IF 2.503) <a href="https://doi.org/10.1680/macr.12.00215" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><u>Zi, G.</u>, Moon, D. Y., <strong>Lee, S.-J.</strong>, Jang, S. Y., Yang, S. C., and Kim, S. S. Investigation of a concrete railway sleeper failed by ice expansion. <em>Engineering Failure Analysis</em> 26: 151–163, 12/2012. (IF 3.114) <a href="https://doi.org/10.1016/j.engfailanal.2012.07.023" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Moon, D. Y., <u>Zi, G.</u>, Kim, J. H., <strong>Lee, S.-J.</strong>, and Kim, G. On strain change of prestressing strand during detensioning procedures. <em>Engineering Structures</em> 32(9): 2570–2578, 09/2010. (IF 4.471) <a href="https://doi.org/10.1016/j.engstruct.2010.04.030" rel="noopener noreferrer" target="_blank">link</a></li></ul>
+</div>
+</div>
+<div class="page-section">
+<div class="container">
+<h2 class="section-title">Domestic Journal Articles</h2>
+<ul class="pub-list"><li class="pub-item">Naqvi, S. N. R., Kim, S. K., Haider, M. Z., and <strong><u> Lee, S.-J. </u></strong> 그래핀 나노플레이트렛이 포함된 시멘트 모르타르의 전기-기계적 성능, Electro-mechanical performance of graphene nanoplatelets incorporated cement mortar. <em>Journal of Korean Society for Advanced Composite Structures</em> 16(6): 66-71, 12/2025. <a href="https://www.kosacs.or.kr/html/paper_search2.html" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">You, I., <strong>Lee, S.-J.</strong>, Shin, H.-O., Ryu, G.-S., and <u>Lim, K.-M.</u> 잔골재 조합에 따른 초고성능 콘크리트의 압축강도 및 압축성 충진밀도의 특성에 관한 연구, A study on the characteristics of compressive strength and compressible packing density of ultra-high-performance concrete according to sand combination. <em>Journal of the Korean Society of Hazard Mitigation</em> 25(6): 301-309, 12/2025. <a href="https://doi.org/10.9798/KOSHAM.2025.25.6.301" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Lee, H.-W., Ji, S.-W., <strong>Lee, S.-J.</strong>, and <u>Hu, J.-W.</u> 반복하중 환경 내 루프형 댐퍼의 이력거동 특성평가, Evaluation of the hysteresis behavior of loop-type dampers under repeated loading. <em>Journal of Korean Society for Advanced Composite Structures</em> 16(5): 50-55, 10/2025. <a href="https://www.kosacs.or.kr/html/paper_search2.html" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Sung, J. H., <u>Park, J.</u>, Jeong, D. S., You, I., Lee, H. U., and <u><strong>Lee, S.-J.</strong></u> 주입 실험 기반 MWCNTs 혼입 그라우트의 수분 침투 감지 특성, Water infiltration detection performance of MWCNTs-incorporated grouts based on injection experiments. <em>Composites Research</em> 38(4): 403-413, 08/2025. <u><a href="http://www.compositesres.org/journal/archive/view/1684" rel="noopener noreferrer" target="_blank">link</a></u></li>
+<li class="pub-item">Chun, N., You, I., Kim, J.-S., <strong>Lee, S.-J.</strong>, Hwang, K.-M., and <u>Kim, J. J.</u> 개착식 전력구의 상태등급에 따른 구조성능에 대한 매개변수 연구, Parametric study on structural performance according to the condition grade of open-cut electric power tunnel. <em>Journal of the Korean Society of Hazard Mitigation</em> 24(5): 193-201, 10/2024. <a href="https://doi.org/10.9798/KOSHAM.2024.24.5.193" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Lee, M. S., <u>Moon, D. Y.</u>, <strong>Lee, S.-J.</strong>, Kang, D. M., and Park, Y. G. 강섬유보강 콘크리트를 이용한 콘크리트궤도 패널의 휨성능평가, Flexural performance evaluation of steel fiber-reinforced concrete slab track. <em>Journal of the Korean Society for Railway</em> 22(10): 808–821, 10/2019. <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09227600" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><u>Zi, G.</u>, <strong>Lee, S.-J.</strong>, Kwak, Y. M., and Jeong, Y. J. 매개변수 연구를 통한 하이브리드형 부유식 구조물의 인장응력 발생분석, A parametric study on tensile stress of a hybrid floating structure system. <em>Journal of Korean Society of Civil Engineers</em> 32(5B): 313–320, 09/2012. <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE01964323" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><u>Zi, G.</u>, <strong>Lee, S.-J.</strong>, Shin, Y. H., Shim, J. W., and Kim, J. H. FDS code를 이용한 교량하부창고 화재발생원 영향분석, Investigation of the fire source in the warehouse under bridge using FDS code. <em>Journal of Computational Structural Engineering Institute of Korea</em> 24(6): 663–673, 01/2011. <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09207440" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, Yoon. Y. C., Cho, W. Y., Yu, S. M., and <u>Zi, G.</u> API-X80 강재 라인파이프의 대변형 비선형 해석, Large deformation inelastic analysis of API-X80 steel linepipes. <em>Journal of Computational Structural Engineering Institute of Korea</em> 22(4): 363–370, 01/2009. <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09207805&amp;language=ko_KR&amp;hasTopBanner=true" rel="noopener noreferrer" target="_blank">link</a></li></ul>
+</div>
+</div>
+<div class="page-section">
+<div class="container">
+<h2 class="section-title">International Conference Proceeding</h2>
+<ul class="pub-list"><li class="pub-item"><strong>Lee, S.-J.</strong>, You, I., <u>Ahn, D.</u> Wireless sensor for railway concrete infrastructures using self-sensing concrete modules, <em>20th WCNDT: 20th World Conference on Non-Destructive Testing</em>, Songdo Convensia, Incheon, Korea, May 27-31, 2024.</li>
+<li class="pub-item">You, I., <u><strong>Lee, S.-J.</strong></u>, Shin, H.-O., Yoo, D.-Y. Self-sensing capacity of ultra-high performance fiber-reinforced concrete with conductive fillers, <em>20th WCNDT: 20th World Conference on Non-Destructive Testing</em>, Songdo Convensia, Incheon, Korea, May 27-31, 2024.</li>
+<li class="pub-item">Ahn, D., Park. J., <u><strong>Lee, S.-J.</strong></u> Development of a wireless cement-based sensor incorporating multi-walled carbon nanotubes for self-monitoring of concrete infrastructures in railway environments, <em>NANO KOREA 2023: The 21st International Nanotech Symposium &amp; Exhibition</em>, KINTEX, Korea, July 5-7, 2023.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Jeong M. C.</u> Prediction of fatigue behavior based on state estimation method. <em>ART 2016: The 1st Asian Conference on Railway Infrastructure and Transportation</em>, Jeju, Korea, October 19–20, 2016.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Moon, D. Y.</u>, Ahn, C.-H., Lee, J.-W., Zi, G. A precast slab track partially reinforced with GFRP rebars. <em>ACEM16: 2016 World Congress on Advances in Civil, Environmental, and Materials Research / Structure16: The Structures Congress</em>, Jeju, Korea, August 28 – September 1, 2016.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Zi, G.</u> A prognosis of fatigue behavior for viscoelastic material. <em>WCCM 2016: The 12th World Congress on Computational Mechanics</em>, Seoul, Korea, July 24–29, 2016.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, Choi, G., You, I., Oh, M., Kim, N., <u>Zi, G.</u>, Kim, S. Evaluation of buckling strength for design consideration of offshore structures. <em>ISOPE-2015: The Twenty-fifth (2015) International Ocean and Polar Engineering Conference</em>, Kona, Big Island, Hawaii, USA, June 21–26, 2015.</li>
+<li class="pub-item"><u>Zi, G.</u>, <strong>Lee, S.-J.</strong> Probabilistic approach for prediction of fatigue crack growth for viscoelastic material. <em>EMI 2015: Engineering Mechanics Institute Conference</em>, Stanford University, California, USA, June 16–19, 2015.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, Cha, J. Y., Kim, W. -S., Kim, Y. -P., <u>Zi, G.</u> Evaluation of tensile strain capacity for pipelines using strain-based design. <em>ISOPE-2014: The<br/>Twenty-fourth (2014) International Ocean and Polar Engineering Conference</em>, Busan, Korea, June 15–20, 2014.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Zi, G.</u> A nonlinear finite element analysis of concrete railway sleeper damaged by ice expansion. <em>EASEC-13: The Thirteenth East Asia-Pacific Conference on Structural Engineering and Construction</em>, Sapporo, Japan, September 11–13, 2013.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, Cha, J. Y., Moon, D. Y., <u>Zi, G.</u> A numerical case study for a concrete railway sleeper failed by ice expansion. <em>CODE2012: 2nd International Conference on Computational Design in Engineering</em>, Jeju, Korea, November 13–16, 2012.</li>
+<li class="pub-item">Thanh, C. D., <strong>Lee, S.-J.</strong>, <u>Zi, G.</u> A phantom-node method for predicting fatigue multiple-crack growth in thin AL2024-T3 specimens. <em>GTSD2012: International Conference on Green Technology and Sustainable Development</em>, Ho Chi Minh City, Vietnam, September 29–30, 2012.</li>
+<li class="pub-item">Kwak, Y. M., <strong>Lee, S.-J.</strong>, Jeong, Y. J., <u>Zi, G.</u> A parametric study on a concrete floating structure. <em>ASEM 2011: The 2011 World Congress on Advances in structural Engineering and Mechanics</em>, Seoul, Korea, September 18–22, 2011.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, Yoon. Y. C., Hwang S. S.,Cho. W. Y., <u>Zi, G.</u> Development of an evaluation method for the compressive-bending plastic buckling capacity of pipeline steel tube based on strain based design. <em>EASEC-12: The 12th East Asia-Pacific Conference on Structural Engineering and Construction</em>, Hong Kong, January 26–28, 2011.</li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, <u>Zi, G.</u>, Moon, D. Y., Kim, J. and Kim, G. S. Dynamic response of a seven-wire strand during two different detensioning procedure. <em>FRAMCOS-7: International Conference on Fracture Mechanics of Concrete and Concrete Structures</em>, Jeju, Korea, May 23–28, 2010.</li>
+<li class="pub-item">Yu, S. M., Thanh, C. D., Mun, S. H., Lee, H. J., <strong>Lee, S.-J.</strong>, <u>Zi, G.</u> The extended finite element method applied to crack growth mechanism of asphalt pavement. <em>REAAA 13th: Road Engineering Association of Asia and Australasia</em>, Incheon, Korea, September 23–26, 2009.</li>
+<li class="pub-item"><u>Moon, D. Y.</u>, Zi, G., <strong>Lee, S.-J.</strong>, Oh, H. S. Effective rib height of deformed GFRP rebar. <em>FRPRCS-9: International Symposium on Fiber Reinforced Polymer Reinforcement for Concrete Structures</em>, Sydney, Australia, July 13–15, 2009.</li>
+<li class="pub-item"><u>Zi, G.</u>, Moon, D. Y., Hwang, Y. K., Kang, J. G., <strong>Lee, S.-J.</strong> The behavior of the foam-filled GFRP bridge deck in the transverse direction. <em>EASEC-11: The 11th East Asia-Pacific Conference on Structural Engineering and Construction</em>, Taipei, Taiwan, November 19–21, 2008.</li></ul>
+</div>
+</div>
+<div class="page-section">
+<div class="container">
+<h2 class="section-title">Patent and Technology Transfer</h2>
+<ul class="pub-list"><li class="pub-item"><strong>이승정</strong>, 성지혜, 이영은, 정동섭. 다차원 균열 성장을 고려한 파이프라인 피로 손상 예측 방법 및 이를 지원하는 시스템 (출원번호 10-2025-0144317)</li>
+<li class="pub-item">허종완, <strong>이승정</strong>, 이지훈. 다층 이빨 구조 댐퍼 (출원번호 10-2025-0032563)</li>
+<li class="pub-item">허종완, <strong>이승정</strong>, 강민혁, 이헌우. S자형 강판 및 형상기억합금을 구비한 내진 댐퍼 (출원번호 10-2025-0032559)</li>
+<li class="pub-item">허종완, <strong>이승정</strong>, 이영은. 정전기 유도를 통한 시멘트 구조물의 에너지 하베스팅 시스템 (출원번호 10-2025-0027356)</li>
+<li class="pub-item">허종완, <strong>이승정</strong>, 성지혜. 자가진단 센서 및 형상기억합금을 구비한 콘크리트 복원 시스템 (출원번호 10-2025-0010775)</li>
+<li class="pub-item"><strong>이승정</strong>, 류두열. 전도성 콘크리트 구조물 및 그 구조물을 모니터링 하기 위한 방법 (출원번호 10-2022-0189034, 등록번호 10-2793127)</li>
+<li class="pub-item"><strong>이승정</strong>, 최동휘, 라윤상. 빗물을 활용한 마찰대전 발전 시스템 (출원번호 10-2022-0189027, 등록번호 10-2760664)<br/>(기술이전) 빗물을 활용한 마찰대전 발전 시스템(2025), (주)한림, 인천대학교 산학협력단 &amp; 경희대학교 산학협력단 공동기술이전</li>
+<li class="pub-item"><strong>이승정</strong>, 최동휘, 라윤상. 마찰대전 발전 가능한 배수지 물탱크 (출원번호 10-2022-0189023, 등록번호 10-2694801)</li>
+<li class="pub-item"><strong>이승정</strong>, 최동휘, 라윤상. 마찰대전 발전 가능한 배수지 물탱크 (출원번호 10-2024-0008042, 등록번호 10-2653296)</li>
+<li class="pub-item">(기술이전) 차량 탑재형 열차 지진 경보 시스템 및 방법(2022), (주)제이비티 (기술이전 책임자: 유민택)</li>
+<li class="pub-item">(기술이전) 위치측위를 위한 효율적인 개체배치방법 및 그 위치측위장치(2020), (주)지오웍스</li>
+<li class="pub-item">강동훈, 최재헌, 권태순, <strong>이승정</strong>. 철도 차량용 복합 재료 (출원번호 10-2020-0172292, 등록번호 10-2521698)</li>
+<li class="pub-item">강동훈, 최재헌, 권태순, <strong>이승정</strong>. 철도 차량용 복합 재료 제조 방법 (출원번호 10-2020-0172252, 등록번호 10-2383910)</li>
+<li class="pub-item">강동훈, <strong>이승정</strong>, 김순희, 최수용. 발열 장갑용 콘트롤러 (출원번호 30-2020-0065491, 등록번호 30-1149306)</li>
+<li class="pub-item">강동훈, <strong>이승정</strong>, 김순희, 최재헌, 최수용. 발열 패널 (출원번호 30-2020-0054070, 등록번호 30-1137873)</li>
+<li class="pub-item">강동훈, <strong>이승정</strong>, 김순희, 최수용. 발열 장갑 (출원번호 30-2020-0065490, 등록번호 30-1092756)</li>
+<li class="pub-item">박정준, 이준석, 김민정, <strong>이승정</strong>, 유민택, 김병규. 철도 터널의 자동화된 BIM 구축 시스템 및 방법 (출원번호 10-2020-0154569, 등록번호 10-2457354)</li>
+<li class="pub-item">조영철, 방인석, 이찬영, 한우진, 임상진, 권세곤, 최영길, 김재왕, 강윤석, 방춘석, 장동두, <strong>이승정</strong>. 자갈궤도의 급속개량에 적합하게 사용될 수 있는 콘크리트궤도 시공방법 및 이를 위한 콘크리트슬래브 지지장치와 철도 부설장치 (출원번호 10-2020-0138667, 등록번호 10-2212757)</li>
+<li class="pub-item">조영철, 방인석, 이찬영, 한우진, 임상진, 권세곤, 김재왕, 강윤석, 방춘석, 장동두, <strong>이승정</strong>. 자갈궤도의 급속개량에 적합하게 사용될 수 있는 콘크리트궤도 시공방법 및 이를 위한 콘크리트슬래브 지지장치와 철도 부설장치 (출원번호 10-2019-0149947, 등록번호 10-2122610)</li>
+<li class="pub-item">강동훈, 최경후, 김순희, <strong>이승정</strong>. 벽면 부착형 발열체 시스템 (출원번호 10-2019-0168795, 등록번호 10-2166688)<br/>(기술이전) 발열시스템 기술 응용 융복합 제품 실용화 기술 등 (기술이전 책임자: 강동훈)</li>
+<li class="pub-item">강동훈, 최경후, 김순희, <strong>이승정</strong>. 열선이 부설된 마사지장갑 (출원번호 30-2019-0063037, 등록번호 30-1087111)</li>
+<li class="pub-item">강동훈, 최경후, 김순희, <strong>이승정</strong>. 보온시트 (출원번호 30-2019-0059769, 등록번호 30-1087110)</li>
+<li class="pub-item"><strong>이승정</strong>. 전도성 나노 충전제가 혼입된 침목 센서, 철도 침목, 이를 포함하는 철도 안전 진단시스템 (출원번호 10-2019-0091833, 등록번호 10-2178911)</li>
+<li class="pub-item">강윤석, 방춘석, <strong>이승정</strong>. 철도용 일탈방호시설 패널 및 이를 이용한 충돌하중 측정시스템 (출원번호 10-2019-0087744, 등록번호 10-2130115)</li>
+<li class="pub-item">박정준, 윤형철, 이재혁, 이준석, <strong>이승정</strong>, 유민택, 김민정. 철도교량의 자동화된 BIM 구축 시스템 및 방법 (출원번호 10-2019-0160542, 등록번호 10-2397256)</li>
+<li class="pub-item">오홍섭, 문도영, <strong>이승정</strong>, 이현기, 김영환. 철도 궤도회로 수신전압 저하현상을 방지하기 위한 콘크리트슬래브 궤도 (출원번호 10-2018-0167269, 등록번호 10-2268499)</li>
+<li class="pub-item">강동훈, 김순희, 장민우, <strong>이승정</strong>, 연제훈. 회전 발열체 전원공급 제어 장치 및 방법 (출원번호 10-2018-0166124, 등록번호 10-2154288)</li>
+<li class="pub-item">강윤석, 방춘석, <strong>이승정</strong>, 김지환, 이나현, 윤희택, 신승권, 김대상. 철도용 일탈방호시설 시공장비 및 시공방법 (출원번호 10-2018-0141662, 등록번호 10-2149001)<br/>(기술이전) 철도교량 궤간 내 일탈방호시설 현장 급속 시공방법(2019), (주)유비이엔씨, (기술이전 책임자: 강윤석)</li>
+<li class="pub-item">유민택, 박정준, 이일화, <strong>이승정</strong>. 지진 예상피해액 예측 기법을 통한 지진 대비 유지보수 예산최적화 시스템 및 방법 (출원번호 10-2018-0130273)</li></ul>
+</div>
+</div>
+<div class="page-section">
+<div class="container">
+<h2 class="section-title">Book</h2>
+<ul class="pub-list"><li class="pub-item">콘크리트 실무지침 KCI-PM112.2-25 GFRP 보강근 보강 콘크리트구조 설계 지침, 한국콘크리트학회, 2025. <a href="https://bookstore.kci.or.kr/kci/Book/bookDetail?pid=7404" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">You, I., <strong>Lee, S.-J.</strong>, and Yoo, D.-Y. “Chapter 10. Cement-based piezoresistive sensors for structural monitoring (pp.249–276)” in “Nanotechnology in Cement-Based Construction” edited by D’Alessandro, A. Materazzi, A. L., and Ubertini, F., Jenny Stanford Publishing, 2020. <a href="https://www.jennystanford.com/9789814800761/nanotechnology-in-cement-based-construction/" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Korean Steel Structure Design Code and Commentary (Load and Resistance Factored Design), Korean Society of Steel Construction (강구조설계기준 및 해설(하중저항계수설계법), 한국강구조학회), 2018. (합성구조분야)</li></ul>
+</div>
+</div>
+<div class="page-section">
+<div class="container">
+<h2 class="section-title">Scientific Magazine Articles</h2>
+<ul class="pub-list"><li class="pub-item">You, I., <strong>Lee, S.-J.</strong>, Choi, G., Oh, M. H. and Zi, G. DNV 기반의 TLP 구조물의 좌굴강도 평가기법 비교, Comparison of DNV-based buckling strength assessment techniques for TLP structures. <em>강구조학회지 Magazine of the Korea Society of Steel Construction</em> 38(1): 55-59, 2026. <a href="https://www.dbpia.co.kr/Society/articleDetail/NODE12607184?pubId=11031&amp;selPid=&amp;isView=N" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Moon, D., Kim, S., You, I., <strong>Lee, S.-J.</strong>, Jang, S. Y., Choi, K.-K. and Choi, M.-S. 유리섬유 강화 폴리머(GFRP) 보강근 콘크리트공사 기준의 집필방향과 주요이슈, Direction and Major Issues of Construction Standard for GFRP Reinforced Concrete Structures. <em>콘크리트학회지 </em><em>Magazine of the Korea Concrete Institute</em> 38(1): 38-43, 2026. <a href="https://www.kci.or.kr/pages_publication/academic_journals.vm" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">You, I., <strong>Lee, S.-J.</strong>, and Moon, D. 전력구 TBM의 후방대차용 FRP 침목의 적용 사례, Application of a fiber reinforced polymer(FRP) sleeper for tunnel boring machine(TBM) gantry in electric power tunnel. <em>복합신소재구조학회지 </em><em>Magazine of the Korean Society for Advanced Composite Structures</em> 16(2): 53-61, 2025. <a href="https://www.kosacs.or.kr/fbook/main.html?pid=kosacs_16-2" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Kim, S., Roh, H., Moon, D., Park, C., <strong>Lee, S.-J.</strong>, Jang, S. Y. and Choi, K.-K. 학회 GFRP 보강 콘크리트 구조설계기준의 집필방향과 주요이슈, Direction and major issues of KCI structural design code for GFRP reinforced concrete structures. <em>콘크리트학회지 Magazine of the Korea Concrete Institute</em> 36(2): 48-57, 2024. <a href="https://www.kci.or.kr/pages_publication/academic_journals.vm" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J., </strong>Moon, D. and Kim, S. 국내 GFRP 보강근 제품 생산 현황, Current state on the production of GFRP reinforcement in Korea. <em>콘크리트학회지 Magazine of the Korea Concrete Institute</em> 36(2): 42-47, 2024. <a href="https://www.kci.or.kr/pages_publication/academic_journals.vm" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Moon, D., Zi, G., <strong>Lee, S.-J.</strong> and Kim, S. GFRP 보강근 최소 요구성능과 품질 확인을 위한 학회 규격 개발, Development of a KCI specification for minimum required properties and quality confirmation for GFRP rebars in concrete structures. <em>콘크리트학회지 Magazine of the Korea Concrete Institute</em> 36(2): 32-41, 2024. <a href="https://www.kci.or.kr/pages_publication/academic_journals.vm" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Lim, J., <strong>Lee, S.-J.</strong>, Park, J., Lee, E. and Jeong, S.-W. 대형 민수항공기 이코노미급 복합재 경량 좌석 국산화 개발, Development of composite lightweight economy seat for large civil aircraft. <em>복합신소재구조학회지 Magazine of the Korean Society for Advanced Composite Structures</em> 13(4): 26-29, 2022. <a href="https://kosacs.or.kr/html/sub3_04.html" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Bae, J.-H., Bae, Y.-H., Um, J.-H., Lee, I.-W. and <strong>Lee, S.-J.</strong> 유리섬유복합체 보강근을 활용한 LVT형 RC 침목 개발, Development of LVT type reinforced concrete sleeper using glass fiber-reinforced polymer rebars. <em>복합신소재구조학회지 Magazine of the Korean Society for Advanced Composite Structures </em>13(2): 24-31, 2022. <a href="https://kosacs.or.kr/html/sub3_04.html" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.,</strong> Kim, Y.-H., Moon, D.-Y. and Oh, H. 유리섬유보강근과 섬유보강콘크리트 기술을 활용한 프리캐스트 슬래브궤도 개발, Development of precast slab track using glass fiber-reinforced polymer rebars and fiber-reinforced concrete. <em>복합신소재구조학회지 Magazine of the Korean Society for Advanced Composite Structures </em>12(4): 15-22, 2021. <a href="https://kosacs.or.kr/html/sub3_04.html" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Kang, D. and<strong> Lee, S.-J.</strong> 레진 인퓨전 공법 기반 철도차량용 복합소재 라미네이트 패널 제작 기술, Manufacturing technology of composite laminate panel for railway vehicle using resin infusion method. <em>복합신소재구조학회지 Magazine of the Korean Society for Advanced Composite Structures </em>12(1): 32-38, 2021. <a href="https://kosacs.or.kr/html/sub3_04.html" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item">Kang, Y.-S., <strong>Lee, S.-J.</strong>, Bang, C.-S., Kim, H.-J., Kwak, H.-G. and Kim, J.-J. 기존 철도교량 일탈방호시설의 설계, 성능평가 및 시공, Design, test and construction of derailment containment provisions for existing railway bridges. <em>The Magazine of the Korean Society of Civil Engineers 대한토목학회지</em> 68(3): 46-53, 2020. <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE09309971" rel="noopener noreferrer" target="_blank">link</a></li>
+<li class="pub-item"><strong>Lee, S.-J.</strong>, You, I. and Yoo, D.-Y. 시멘트기반 센서를 이용한 콘크리트 구조물의 자가진단 성능 분석, Self-sensing capacity of concrete structures using cement-based sensors. <em>The Magazine of the Korean Society of Civil Engineers 대한토목학회지</em> 66(12): 75-79, 2018. <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE07576088" rel="noopener noreferrer" target="_blank">link</a></li></ul>
+</div>
+</div>
+<div class="page-section">
+<div class="container">
+<h2 class="section-title">Standard</h2>
+<ul class="pub-list"><li class="pub-item">KDS 14 20 68 유리섬유 강화 폴리머 보강근 콘크리트구조 설계기준, 2024.</li></ul>
+</div>
+</div>
+</main>
+<footer>
+<div class="container">
+<a href="https://info.flagcounter.com/Ovbp" rel="noopener noreferrer" target="_blank">
+<img alt="Flag Counter" src="https://s05.flagcounter.com/count2/Ovbp/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" style="border:0;"/>
+</a>
+</div>
+</footer>
+<script>
+  (function(){
+    var btn = document.getElementById('menuToggle');
+    var nav = document.getElementById('mainNav');
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+
+  (function(){
+    var siteNav = document.getElementById('siteNav');
+    var heroFade = document.getElementById('heroFade');
+    var heroMedia = document.getElementById('heroMedia');
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ticking = false;
+
+    function update(){
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset;
+      var heroH = heroMedia.offsetHeight;
+
+      siteNav.classList.toggle('is-scrolled', y > 40);
+
+      if(!reduceMotion){
+        var fade = Math.min(1, Math.max(0, y / (heroH * 0.85)));
+        heroFade.style.opacity = fade;
+      }
+    }
+
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    update();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Material and Structure Lab - Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3f3f3f;
+    --text:#222222;
+    --accent-gold:#a48f7a;
+    --accent-teal:#24678d;
+    --body-bg:#f2f2f2;
+    --panel-bg:#f7f5f2;
+    --border:#e2ddd6;
+    --max:1180px;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--body-bg);
+    color:var(--text);
+    font-family:'Montserrat', Arial, Helvetica, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+
+  /* ---------- hero / header ---------- */
+  .site-header{ position:relative; }
+  .hero-media{
+    position:relative;
+    height:300px;
+    background-image:url("images/top-banner-research.jpg");
+    background-size:cover;
+    background-position:center 30%;
+    overflow:hidden;
+  }
+  .hero-media::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:170px;
+    background:linear-gradient(to bottom, rgba(10,16,22,.55), rgba(10,16,22,0));
+    pointer-events:none;
+  }
+  .hero-fade{
+    position:absolute;
+    inset:0;
+    background:var(--body-bg);
+    opacity:0;
+    pointer-events:none;
+  }
+  .site-nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background-color:rgba(20,30,38,0);
+    box-shadow:0 0 0 rgba(0,0,0,0);
+    transition:background-color .2s ease, box-shadow .2s ease;
+  }
+  .site-nav.is-scrolled{
+    background-color:rgba(255,255,255,.98);
+    box-shadow:0 2px 12px rgba(0,0,0,.12);
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    min-height:66px;
+  }
+  .logo{ flex-shrink:0; }
+  .logo img{ height:44px; width:auto; max-width:none; }
+  .logo-dark{ display:none; }
+  .site-nav.is-scrolled .logo-light{ display:none; }
+  .site-nav.is-scrolled .logo-dark{ display:block; }
+
+  .main-nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .main-nav a{
+    color:#ffffff;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+    white-space:nowrap;
+    transition:color .2s ease, border-color .15s ease, opacity .15s ease;
+  }
+  .main-nav a:hover, .main-nav a.active{
+    border-bottom-color:#ffffff;
+  }
+  .site-nav.is-scrolled .main-nav a{ color:#222222; }
+  .site-nav.is-scrolled .main-nav a:hover,
+  .site-nav.is-scrolled .main-nav a.active{ border-bottom-color:#222222; }
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:26px;
+    line-height:1;
+    cursor:pointer;
+    padding:4px 8px;
+  }
+  .site-nav.is-scrolled .menu-toggle{ color:#222222; }
+
+  /* ---------- page title ---------- */
+  .intro{
+    text-align:center;
+    padding:70px 32px 8px;
+  }
+  .page-title{
+    margin:0 0 8px;
+    font-size:26px;
+    line-height:1.28;
+    font-weight:700;
+    color:var(--ink);
+  }
+
+  /* ---------- shared page sections ---------- */
+  .page-section{ padding:46px 0; }
+  .intro + .page-section,
+  .page-section + .page-section{ border-top:1px solid var(--border); }
+  .page-section:last-of-type{ border-bottom:1px solid var(--border); }
+  .section-title{
+    margin:0 0 30px;
+    font-size:22px;
+    font-weight:700;
+    color:#000;
+    text-align:center;
+  }
+
+  /* ---------- theme (two diagrams stacked, shared text below) ---------- */
+  .theme-images{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:24px;
+    margin:0 auto 34px;
+  }
+  .theme-images img{
+    max-width:830px;
+    width:100%;
+  }
+  .theme-text{
+    max-width:760px;
+    margin:0 auto;
+    text-align:justify;
+    font-size:15.5px;
+    color:#222;
+  }
+  .theme-text > p{ margin:0 0 4px; }
+  .theme-text .question{
+    margin:26px 0 6px;
+    font-size:18px;
+    font-weight:700;
+    color:var(--accent-teal);
+  }
+  .theme-text .question:first-child{ margin-top:0; }
+  .theme-text ul{
+    margin:0 0 4px;
+    padding-left:22px;
+  }
+  .theme-text li{ margin:4px 0; }
+
+  /* ---------- grant list: bulleted, one line per item ---------- */
+  .grant-list{
+    list-style:disc;
+    margin:0;
+    padding-left:22px;
+  }
+  .grant-item{
+    margin:11px 0;
+    font-size:14.5px;
+    line-height:1.6;
+  }
+  .grant-title{
+    font-weight:700;
+    color:#222;
+  }
+  .grant-meta{
+    color:#222;
+  }
+  /* Per-line color control: add class="grant-item gray" on any <li> to mute it.
+     Color is no longer decided by position/order in the list. */
+  .grant-item.gray .grant-title,
+  .grant-item.gray .grant-meta{
+    color:#999;
+  }
+
+  /* ---------- collaboration: bulleted, one line per person ---------- */
+  .collab-list{
+    list-style:disc;
+    margin:0;
+    padding-left:22px;
+  }
+  .collab-item{
+    margin:11px 0;
+    font-size:14.5px;
+    line-height:1.6;
+    color:#333;
+  }
+  .collab-name{
+    font-weight:700;
+    color:#222;
+  }
+  a.collab-name{ color:var(--accent-teal); }
+  a.collab-name:hover{ text-decoration:underline; }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:20px 0 40px;
+  }
+  footer .container{
+    display:flex;
+    justify-content:flex-end;
+  }
+
+  /* ---------- mobile ---------- */
+  @media (max-width:980px){
+    .hero-media{ height:148px; background-attachment:scroll; background-position:center 30%; }
+    .header-row{ padding:14px 20px; position:relative; }
+    .logo img{ height:34px; }
+    .menu-toggle{ display:block; }
+    .main-nav{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:rgba(20,25,30,.98);
+      display:none;
+      flex-direction:column;
+    }
+    .main-nav.open{ display:flex; }
+    .main-nav ul{
+      flex-direction:column;
+      gap:0;
+      padding:6px 0;
+    }
+    .main-nav li{ border-top:1px solid rgba(255,255,255,.12); }
+    .main-nav a{
+      display:block;
+      padding:14px 20px;
+      border-bottom:none;
+    }
+    .main-nav a.active{ color:var(--accent-gold); }
+    .site-nav.is-scrolled .main-nav a{ color:#ffffff; }
+    .site-nav.is-scrolled .main-nav a.active{ color:var(--accent-gold); }
+
+    .container{ padding:0 20px; }
+    .intro{ padding:50px 20px 4px; }
+    .theme-images{ gap:18px; }
+    .theme-images img{ max-width:100%; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="hero-media" id="heroMedia">
+      <div class="hero-fade" id="heroFade"></div>
+    </div>
+    <div class="site-nav" id="siteNav">
+      <div class="header-row">
+        <a href="index.html" class="logo">
+          <img src="images/logo-white.png" class="logo-light" alt="Smart Material and Structure Lab">
+          <img src="images/logo-color.png" class="logo-dark" alt="Smart Material and Structure Lab">
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+        <nav class="main-nav" id="mainNav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html" class="active">RESEARCH</a></li>
+            <li><a href="research-achivement.html">RESEARCH ACHIVEMENT</a></li>
+            <li><a href="members.html">MEMBERS</a></li>
+            <li><a href="opening.html">OPENING</a></li>
+            <li><a href="lecture.html">LECTURE</a></li>
+            <li><a href="news.html">NEWS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro container">
+      <h1 class="page-title">RESEARCH</h1>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <h2 class="section-title">THEME</h2>
+        <div class="theme-images">
+          <img src="images/research-predict_failure.png" alt="Prediction of structural failure: numerical methods, real-time sensing, and prognostics and health management">
+          <img src="images/research-scale.png" alt="Civil engineering in Industry 4.0: from structural-scale structures to nano-scale materials">
+        </div>
+        <div class="theme-text">
+          <p class="question">Can we predict the failure of the structures before it occurs??</p>
+          <ul>
+            <li>Develop efficient numerical analysis and algorithms for various engineering problems</li>
+            <li>Develop an optimal sensing system to properly monitor structural behavior</li>
+            <li>Detect signs of failure of a structure and Predict its remaining useful life</li>
+          </ul>
+          <p class="question">Can we contribute to the environment??</p>
+          <ul>
+            <li>Develop Net Zero Energy Structure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <h2 class="section-title">GRANT</h2>
+        <ul class="grant-list">
+          <li class="grant-item"><span class="grant-title">탄소저감형 수중데이터센터 실증모델 개발</span> <span class="grant-meta">&mdash; 04/2026 &ndash; 12/2030 &middot; 해양수산과학기술진흥원 &middot; 탄소제로 수중데이터센터 표준모델 개발사업 (주관: 한국해양과학기술원, 위탁기관 참여)</span></li>
+          <li class="grant-item"><span class="grant-title">항공기 이탈방지용 긴급제동 활주로 시스템(EMAS) 개발</span> <span class="grant-meta">&mdash; 04/2026 &ndash; 12/2030 &middot; 국토교통과학기술진흥원 &middot; 항공기이탈방지용긴급제동활주로시스템(EMAS)개발(R&amp;D) 사업 (주관: 한국건설기술연구원, 공동기관 참여)</span></li>
+          <li class="grant-item"><span class="grant-title">고강도 무시멘트 콘크리트 재료 및 설계·시공 기술 개발</span> <span class="grant-meta">&mdash; 04/2025 &ndash; 12/2028 &middot; 국토교통과학기술진흥원 &middot; 고강도 무시멘트 콘크리트 재료 및 설계·시공 기술 개발 사업 (주관: (주)한국건설생활환경시험연구원, 공동기관 참여)</span></li>
+          <li class="grant-item"><span class="grant-title">체결력 1kN 이상을 만족하는 대형구조물용 섬유강화복합재 적용 30% 경량화 Walk to Work(W2W) 부품개발</span> <span class="grant-meta">&mdash; 07/2024 &ndash; 12/2027 &middot; 한국산업기술기획평가원 &middot; 소재부품기술개발사업(R&amp;D 패키지형) (주관: (주)디에스글로벌이씨엠, 공동기관 참여)</span></li>
+          <li class="grant-item"><span class="grant-title">이산화탄소 포집 및 광물탄산화 기술 적용 시멘트 제품 종합실증센터 구축</span> <span class="grant-meta">&mdash; 05/2024 &ndash; 12/2026 &middot; 한국산업기술진흥원 &middot; 시멘트산업이산화탄소저감종합실증센터구축 사업 (주관: 한국건설생활환경시험연구원, 공동기관 참여)</span></li>
+          <li class="grant-item"><span class="grant-title">섬유보강 초고밀도 콘크리트의 압축강도 예측모델 및 배합 기술 분석</span> <span class="grant-meta">&mdash; 06/2026 &ndash; 12/2026 &middot; 한국건설기술연구원 주요사업(용역)</span></li>
+          <li class="grant-item"><span class="grant-title">전도성 자가진단 시멘트 센서 활용 지반 이방성 응력 계측 시작품 제작 및 성능평가</span> <span class="grant-meta">&mdash; 05/2026 &ndash; 10/2026 &middot; 한국철도기술연구원 주요사업(용역)</span></li>
+          <li class="grant-item gray"><span class="grant-title">초고밀도 콘크리트의 압축강도 예측을 위한 충진밀도 모델 구축과 시험체 제작 및 물성 측정</span> <span class="grant-meta">&mdash; 06/2025 &ndash; 12/2025 &middot; 한국건설기술연구원 (주관: 충남대학교, 연구원 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">이방성 응력 계측이 가능한 전도성 나노소재 기반 센싱 기술 설계 및 실험 용역</span> <span class="grant-meta">&mdash; 03/2025 &ndash; 11/2025 &middot; 한국철도기술연구원 주요사업(용역)</span></li>
+          <li class="grant-item gray"><span class="grant-title">GFRP 보강 콘크리트 구조물 시공기준 개발연구</span> <span class="grant-meta">&mdash; 03/2025 &ndash; 11/2025 &middot; 한국건설기술연구원 국가건설기준센터 (주관: (사)한국콘크리트학회, 연구원 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">전도성 나노소재 혼입 그라우팅의 지반 열화 시의 지하수 침투 모니터링 실험 용역 자문</span> <span class="grant-meta">&mdash; 07/2024 &ndash; 12/2024 &middot; 한국철도기술연구원 주요사업 (용역)</span></li>
+          <li class="grant-item gray"><span class="grant-title">스마트 건설기준 정립 및 기준 고도화 용역</span> <span class="grant-meta">&mdash; 08/2021 &ndash; 12/2024 &middot; 국가철도공단 (주관: (사)한국철도학회, 연구원 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">전력구터널 레일 침목 및 가설통행로 전력구조물 FRP 개발 연구용역</span> <span class="grant-meta">&mdash; 09/2023 &ndash; 10/2024 &middot; 한국전력공사 (주관: (사)한국콘크리트학회, 연구원 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">전력구 종합성능평가 기준 수립 및 자동화 기술 개발</span> <span class="grant-meta">&mdash; 04/2022 &ndash; 07/2024 &middot; 한국전력공사 전력연구원 (주관: (사)한국방재학회, 연구원 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">전도성 나노소재를 활용한 자가진단 프리캐스트 콘크리트 기술 개발</span> <span class="grant-meta">&mdash; 03/2019 &ndash; 02/2024 &middot; 한국연구재단 기초연구사업 우수신진연구</span></li>
+          <li class="grant-item gray"><span class="grant-title">GFRP 보강근 전력구조물 적용관련 연구용역</span> <span class="grant-meta">&mdash; 10/2022 &ndash; 12/2023 &middot; 한국전력공사 (주관: (사)한국콘크리트학회, 연구원 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">터널의 에너지 생산 및 결로 방지 장치의 기초 실험 및 타당성 검증 용역</span> <span class="grant-meta">&mdash; 10/2023 &ndash; 12/2023 &middot; 한국철도기술연구원 자체사업 (용역)</span></li>
+          <li class="grant-item gray"><span class="grant-title">전도성 나노소재 혼입 그라우팅의 차수성능 확보를 위한 최적 시스템 구성 도출 용역</span> <span class="grant-meta">&mdash; 08/2023 &ndash; 12/2023 &middot; 한국철도기술연구원 주요사업 (용역) (주관: 전북대학교, 연구원 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">대형 민수항공기 이코노미급 복합재 경량 좌석 국산화 개발</span> <span class="grant-meta">&mdash; 01/2020 &ndash; 12/2022 &middot; 한국산업기술평가관리원 소재부품기술개발산업기술혁신사업 (주관: ANH Structure, 공동기관 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">전도성 나노소재 혼입 그라우팅의 적정 혼합 배율 도출 용역</span> <span class="grant-meta">&mdash; 06/2022 &ndash; 11/2022 &middot; 한국철도기술연구원 주요사업 (용역)</span></li>
+          <li class="grant-item gray"><span class="grant-title">전도성 나노소재를 혼입한 그라우팅 시편 제작 및 전기적 특성 파악 용역</span> <span class="grant-meta">&mdash; 10/2021 &ndash; 12/2021 &middot; 한국철도기술연구원 주요사업 (용역)</span></li>
+          <li class="grant-item gray"><span class="grant-title">철도·궤도시설 기술기준 개선 연구</span> <span class="grant-meta">&mdash; 04/2020 &ndash; 12/2020 &middot; 국토교통부 철도시설안전과</span></li>
+          <li class="grant-item gray"><span class="grant-title">GFRP와 섬유보강 콘크리트 기술을 활용한 신호교란 없는 고성능 프리캐스트 슬래브 궤도 개발</span> <span class="grant-meta">&mdash; 06/2016 &ndash; 04/2019 &middot; 국토교통과학기술진흥원 국토교통기술촉진연구사업 (주관: 경남과학기술대학교(現 경상국립대학교), 공동기관 참여)</span></li>
+          <li class="grant-item gray"><span class="grant-title">시멘트기반 센서와 무선전송 기술 융합 자가진단 철도침목 기초연구</span> <span class="grant-meta">&mdash; 06/2018 &ndash; 12/2018 &middot; 한국철도기술연구원 자체사업</span></li>
+          <li class="grant-item gray"><span class="grant-title">시멘트센서 기반 자가진단철도침목 기초기술 연구</span> <span class="grant-meta">&mdash; 06/2016 &ndash; 12/2016 &middot; 한국철도기술연구원 자체사업</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <div class="container">
+        <h2 class="section-title">COLLABORATION</h2>
+        <ul class="collab-list">
+          <li class="collab-item"><a class="collab-name" href="https://sites.google.com/view/ace-lab-jbnu/home" target="_blank" rel="noopener noreferrer">Prof. Ilhwan You</a>, Rural Construction Engineering Department, Jeonbuk National University</li>
+          <li class="collab-item"><span class="collab-name">Dr. Jeongjun Park</span>, Advanced Railroad Civil Engineering Division, Korea Railroad Research Institute</li>
+          <li class="collab-item"><a class="collab-name" href="https://sites.google.com/view/acml/home" target="_blank" rel="noopener noreferrer">Prof. Doo-Yeol Yoo</a>, Department of Architecture and Architectural Engineering, Yonsei University</li>
+          <li class="collab-item"><a class="collab-name" href="https://dongwhichoi.wixsite.com/maplab" target="_blank" rel="noopener noreferrer">Prof. Dongwhi Choi</a>, Department of Mechanical Engineering, Kyung Hee University</li>
+          <li class="collab-item"><a class="collab-name" href="https://sites.google.com/site/modelingnsimulation/" target="_blank" rel="noopener noreferrer">Prof. Jin-Gyun Kim</a>, Department of Mechanical Engineering, Kyung Hee University</li>
+          <li class="collab-item"><a class="collab-name" href="https://sites.google.com/view/rcslab" target="_blank" rel="noopener noreferrer">Prof. Hyunoh Shin</a>, Department of Agricultural and Rural Engineering, Chungnam University</li>
+          <li class="collab-item"><a class="collab-name" href="http://kscms.ks.ac.kr/civil/CMS/ProfessorMgr/list.do?mCode=MN018" target="_blank" rel="noopener noreferrer">Prof. Do-Young Moon</a>, Department of Civil Engineering, Kyungsung University</li>
+          <li class="collab-item"><a class="collab-name" href="https://ierlseoultech.weebly.com/" target="_blank" rel="noopener noreferrer">Prof. KyuHan Kim</a>, Department of Chemical and Biomolecular Engineering, Seoul National University of Science and Technology</li>
+          <li class="collab-item"><a class="collab-name" href="https://dpil.seoultech.ac.kr/index.do" target="_blank" rel="noopener noreferrer">Prof. Dahoon Ahn</a>, Department of Mechanical System Design Engineering, Seoul National University of Science and Technology</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <a href="https://info.flagcounter.com/Ovbp" target="_blank" rel="noopener noreferrer">
+        <img src="https://s05.flagcounter.com/count2/Ovbp/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" style="border:0;">
+      </a>
+    </div>
+  </footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menuToggle');
+    var nav = document.getElementById('mainNav');
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+
+  (function(){
+    var siteNav = document.getElementById('siteNav');
+    var heroFade = document.getElementById('heroFade');
+    var heroMedia = document.getElementById('heroMedia');
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ticking = false;
+
+    function update(){
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset;
+      var heroH = heroMedia.offsetHeight;
+
+      siteNav.classList.toggle('is-scrolled', y > 40);
+
+      if(!reduceMotion){
+        var fade = Math.min(1, Math.max(0, y / (heroH * 0.85)));
+        heroFade.style.opacity = fade;
+      }
+    }
+
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    update();
+  })();
+</script>
+</body>
+</html>
